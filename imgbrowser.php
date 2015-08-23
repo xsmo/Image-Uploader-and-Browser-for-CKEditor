@@ -33,6 +33,8 @@ if ($encode == "yes") {
             exit;	
         }
     }
+} elseif ($encode == "no") {
+    $_SESSION['username'] = "disabledpw";
 } elseif ($encode != "no") {
     echo "An error occurred. <a href=\"http://ibm.bplaced.com/contact/index.php?cdproject=Image%20Uploader%20and%20Browser%20for%20CKEditor\">Please contact us.</a>";
     exit;
