@@ -9,7 +9,7 @@ if(isset($_SESSION['username'])){
     $image_type = $a[2];
 
     if(in_array($image_type , array(IMAGETYPE_GIF , IMAGETYPE_JPEG ,IMAGETYPE_PNG))) {
-        unlink($imgSrc);
+        unlink(__DIR__ . '/' . $imgSrc);
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     } else {
         echo '

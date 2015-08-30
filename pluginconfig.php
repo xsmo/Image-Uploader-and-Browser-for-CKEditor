@@ -8,18 +8,20 @@ if(isset($_SESSION['username'])){
     
     if(isset($_POST["newpath"])){
         $temppath = $_POST["newpath"];
-        $newpath = htmlspecialchars($temppath, ENT_QUOTES);
+        $newpath = strip_tags($temppath);
+        $newpath = htmlspecialchars($newpath, ENT_QUOTES);
         $data = '
     $useruploadfolder = "'.$newpath.'";
     $useruploadpath = "../../../'.$newpath.'/";
     $foldershistory[] = "'.$newpath.'";
         '.PHP_EOL;
-        $fp = fopen('pluginconfig.php', 'a');
+        $fp = fopen(__DIR__ . '/pluginconfig.php', 'a');
         fwrite($fp, $data);
     } 
 
     if(isset($_GET["newfoldername"])){
-        $newfoldername = $_GET["newfoldername"];
+        $newfoldername = strip_tags($_GET["newfoldername"]);
+        $newfoldername = htmlspecialchars($newfoldername, ENT_QUOTES);
         mkdir('../../../'.$newfoldername.'', 0777, true);
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     } 
@@ -27,10 +29,9 @@ if(isset($_SESSION['username'])){
 }
 
 // Version of the plugin
-$currentpluginver = "2.7.1";
+$currentpluginver = "3.0";
 
 // username and password
-$encode = "yes";
 $username = "";
 $password = "";
 

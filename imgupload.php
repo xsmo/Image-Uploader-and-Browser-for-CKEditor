@@ -9,7 +9,7 @@ if(!isset($_SESSION['username'])) {
 }
 
 // Including the plugin config file, don't delete the following row!
-require('pluginconfig.php');
+require(__DIR__ . '/pluginconfig.php');
 
 $info = pathinfo($_FILES["upload"]["name"]);
 $ext = $info['extension'];

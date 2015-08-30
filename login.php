@@ -2,9 +2,10 @@
 session_start();
 header('content-type: text/html; charset=utf-8');
 
-require("pluginconfig.php");
+require(__DIR__ . "/pluginconfig.php");
 
-$tmpusername = htmlspecialchars($_POST["username"], ENT_QUOTES);
+$tmpusername = strip_tags($_POST["username"]);
+$tmpusername = htmlspecialchars($tmpusername, ENT_QUOTES);
 $tmppassword = md5($_POST['password']);
 
 if($tmpusername == $username and $password == $tmppassword) {
