@@ -16,6 +16,8 @@ $root = "http://$_SERVER[HTTP_HOST]";
 require(__DIR__ . '/pluginconfig.php');
 // Including the functions file, don't delete the following row!
 require(__DIR__ . '/function.php');
+// Including the check_permission file, don't delete the following row!
+require(__DIR__ . '/check_permission.php');
 
 if ($username == "" and $password == "") {
     if(!isset($_SESSION['username'])){
@@ -46,6 +48,11 @@ if ($username == "" and $password == "") {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://ibm.bplaced.com/imageuploader/plugininfo.js"></script>
     <script src="dist/jquery.lazyload.min.js"></script>
+    
+    <script> 
+        // Plugin version
+        var currentpluginver = "<?php echo $currentpluginver; ?>"
+    </script>
     
     <script src="function.js"></script>
     
@@ -90,10 +97,11 @@ loadImages();
         <button class="headerBtn" onclick="$('#uploadImgDiv').fadeToggle(300); $('#background2').fadeToggle(300);"><img src="img/cd-icon-close.png" class="headerIcon"> Close</button>
         <button class="headerBtn greenBtn" name="submit" onclick="$('#uploadImgForm').submit();"><img src="img/cd-icon-upload.png" class="headerIcon"> Upload</button>
     </div><br><br><br>
-    <form action="imgupload.php" method="post" enctype="multipart/form-data" id="uploadImgForm">
+    <form action="imgupload.php" method="post" enctype="multipart/form-data" id="uploadImgForm" onsubmit="return checkUpload();">
         <p class="uploadP"><img src="img/cd-icon-select.png" class="headerIcon"> Please select a file:</p>
         <input type="file" name="upload" id="upload">
-        <br><br>
+        <br><h3 class="settingsh3" style="font-size:12px;font-weight:lighter;">The image will be uploaded to:<br><span style="font-weight:bolder;">"<?php echo $useruploadfolder; ?>"</span> (The upload path can be changed in the settings)</h3>
+        <br>
     </form>
 </div>
     
@@ -123,7 +131,7 @@ loadImages();
     <p class="uploadP" onclick="window.open('http://ibm.bplaced.com/contact/index.php?cdproject=Image%20Uploader%20and%20Browser%20for%20CKEditor&cdlink=<?php echo $link; ?>&cdver='+currentpluginver,'_blank');"><img src="img/cd-icon-bug.png" class="headerIcon"> Report a bug</p>
     
     <br><h3 class="settingsh3">Version:</h3>
-    <p class="uploadP"><img src="img/cd-icon-version.png" class="headerIcon"> <script>document.write(currentpluginver);</script></p>
+    <p class="uploadP"><img src="img/cd-icon-version.png" class="headerIcon"> <?php echo $currentpluginver; ?></p>
     
     <br><h3 class="settingsh3">Credits:</h3>
     <p class="uploadP"><img src="img/cd-icon-credits.png" class="headerIcon"> Made with love by Moritz Maleck</p>

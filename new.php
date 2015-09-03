@@ -115,6 +115,15 @@
         line-height: 32px; 
         margin: -10px 0px 14px;
     }
+    .description { 
+        color: #39424D; 
+        font-family: 'Open Sans', sans-serif; 
+        font-size: 13px; 
+        font-weight: 300; 
+        line-height: 17px; 
+        margin: 10px 0px -10px;
+        text-align: left;
+    }
 </style>
 </head>
 <body>
@@ -134,9 +143,9 @@
     </div>
     <br />
     <div class="hrNews"></div>
-    <p style="text-align:left; font-size:13px; font-family:Verdana, Geneva, sans-serif;">
-    <a href="https://twitter.com/fujanasolutions" style="font-weight:bolder; color:#1862A8; text-decoration:none; font-family:Georgia, 'Times New Roman', Times, serif; font-size:14px;">2015 Image Uploader for CKEditor</a><br />
-    <a href="http://imageuploaderforckeditor.altervista.org/" style="text-decoration:underline; color:#484947;">Documentation</a>  <a href="http://imageuploaderforckeditor.altervista.org/support/" style="text-decoration:underline; color:#484947;">FAQ</a></p> 
+    <p class="description">
+        The default upload folder is <b>ckeditor/plugins/imageuploader/uploads</b>. You can change it in the <b>settings</b> panel.
+    </p> 
     <div class="hrNews hrNews2"></div>
 </div>
 </body>

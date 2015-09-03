@@ -49,9 +49,6 @@ function pluginSettings() {
 
 }
 
-// Plugin version
-var currentpluginver = "<?php echo $currentpluginver; ?>"
-
 // check if new version is available
 $( document ).ready(function() {
     if (currentpluginver != pluginversion) {
@@ -112,4 +109,11 @@ function useHistoryPath(path){
     }).done(function( msg ) {
         location.reload();
     });
+}
+
+function checkUpload(){
+    if( document.getElementById("upload").files.length == 0 ){
+        alert("Please select a file to upload.");
+        return false;
+    }
 }

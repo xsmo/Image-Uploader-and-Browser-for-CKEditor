@@ -1,5 +1,8 @@
 <?php
 
+// Including the check_permission file, don't delete the following row!
+require(__DIR__ . '/check_permission.php');
+
 if(isset($_POST["username"]) or isset($_POST["password"])){
     $tmpusername = strip_tags($_POST["username"]);
     $tmpusername = htmlspecialchars($tmpusername, ENT_QUOTES);

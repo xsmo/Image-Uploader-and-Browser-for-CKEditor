@@ -29,11 +29,34 @@ if(isset($_SESSION['username'])){
 }
 
 // Version of the plugin
-$currentpluginver = "3.0";
+$currentpluginver = "3.0.1";
 
 // username and password
 $username = "";
 $password = "";
+
+// ststem icons
+$sy_icons = array(
+    "cd-ico-browser.ico",
+    "cd-icon-browser.png",
+    "cd-icon-bug.png",
+    "cd-icon-close.png",
+    "cd-icon-coffee.png",
+    "cd-icon-credits.png",
+    "cd-icon-delete.png",
+    "cd-icon-disable.png",
+    "cd-icon-download.png",
+    "cd-icon-faq.png",
+    "cd-icon-images.png",
+    "cd-icon-logout.png",
+    "cd-icon-password.png",
+    "cd-icon-refresh.png",
+    "cd-icon-select.png",
+    "cd-icon-settings.png",
+    "cd-icon-upload.png",
+    "cd-icon-use.png",
+    "cd-icon-version.png"
+);
 
 // Path to the upload folder, please set the path using the Image Browser Settings menu.
 
