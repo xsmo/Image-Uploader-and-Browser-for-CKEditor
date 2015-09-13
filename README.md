@@ -44,7 +44,7 @@ Open the **Image info** tab and click Browse server. A new window will open wher
 Please read the [Plugin FAQ](http://imageuploaderforckeditor.altervista.org/support/).
 
 ## Demo
-The demo can be found here.
+The demo can be found [here](http://imageuploaderforckeditor.altervista.org/#demo).
 
 ## Share
 [Tweet](http://twitter.com/share?url=http://imageuploaderforckeditor.altervista.org&text=Use%20the%20Image%20Uploader%20for%20CKEditor%20for%20free%20now!%20&hashtags=imageuploaderforckeditor) or [Share on Facebook](http://www.facebook.com/sharer.php?u=http://imageuploaderforckeditor.altervista.org).
