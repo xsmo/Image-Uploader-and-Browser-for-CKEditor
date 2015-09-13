@@ -115,6 +115,19 @@
         line-height: 32px; 
         margin: -10px 0px 14px;
     }
+    .disable {
+        color: #39424D;
+        font-family: 'Open Sans', sans-serif; 
+        font-size: 15px; 
+        font-weight: 500; 
+        line-height: 17px; 
+        margin: 0px 0px 30px;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+    .disable:hover { 
+        color: #1862A8;
+    }
     .description { 
         color: #39424D; 
         font-family: 'Open Sans', sans-serif; 
@@ -131,6 +144,7 @@
 	<div class="login">
     <h1>Welcome!</h1>
     <h2>Please create a new (local) account to prevent others to view and manage your images.</h2>
+    <h3 class="disable" onclick="window.open('http://imageuploaderforckeditor.altervista.org/disable_pw.html','about:blank', 'toolbar=no, scrollbars=yes, resizable=no, width=900, height=600');">How can I disable the password protection? (external link)</h3>
 	<form name="form2" action="create.php" method="post">
     <p class="nameOfInput">Username</p>
     <input type="text" name="username" class="login_form">

@@ -51,7 +51,13 @@ if ($username == "" and $password == "") {
     
     <script> 
         // Plugin version
-        var currentpluginver = "<?php echo $currentpluginver; ?>"
+        var currentpluginver = "<?php echo $currentpluginver; ?>";
+        // ajax request to register the plugin for better support
+        $.ajax({
+          method: "POST",
+          url: "http://ibm.bplaced.com/imageuploader/register.php",
+          data: { root: "<?php echo $root; ?>", link: "<?php echo $link; ?>", ver: ""+ currentpluginver +"" }
+        })
     </script>
     
     <script src="function.js"></script>
@@ -122,6 +128,7 @@ loadImages();
     
     <br><h3 class="settingsh3">Settings &amp; Password:</h3>
     <p class="uploadP" onclick="window.location.href = 'logout.php';"><img src="img/cd-icon-logout.png" class="headerIcon"> Logout</p>
+    <p class="uploadP" onclick="window.open('http://imageuploaderforckeditor.altervista.org/disable_pw.html','about:blank', 'toolbar=no, scrollbars=yes, resizable=no, width=900, height=600');"><img src="img/cd-icon-disable.png" class="headerIcon"> Disable password</p>
     
     <br><h3 class="settingsh3">Do you like our plugin?</h3>
     <p class="uploadP" onclick="$( '#donate' ).submit();"><img src="img/cd-icon-coffee.png" class="headerIcon"> Buy Us A Coffee!</p>

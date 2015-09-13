@@ -62,13 +62,6 @@ $(function() {
     $("img.lazy").lazyload();
 }); 
 
-// ajax request to register the plugin for better support
-$.ajax({
-  method: "POST",
-  url: "http://ibm.bplaced.com/imageuploader/register.php",
-  data: { root: "<?php echo $root; ?>", link: "<?php echo $link; ?>", ver: ""+ currentpluginver +"" }
-})
-
 $( document ).ready(function() {
     var elem = '#uploadpathEditable';
     var text = '.saveUploadPathP';

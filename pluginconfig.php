@@ -29,7 +29,7 @@ if(isset($_SESSION['username'])){
 }
 
 // Version of the plugin
-$currentpluginver = "3.0.1";
+$currentpluginver = "4.0.1";
 
 // username and password
 $username = "";
