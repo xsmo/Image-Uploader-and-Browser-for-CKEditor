@@ -81,7 +81,7 @@ body {
     font-size: 13px;
     text-align: left;
     padding-left: 4px;
-    margin-bottom: 0px;
+    margin-bottom: 2px;
     margin-top: 5px;
 }
 
@@ -395,4 +395,23 @@ editable:hover {
 
 .saveUploadPathA {
     margin-top: 18px;
+}
+
+.fileMime {
+	display:inline-block;
+	border:solid;
+	border-width:thin;
+	border-color:#404040;
+	padding: 0px 1px;
+	font-size:9px;
+	font-family:Verdana, Geneva, sans-serif;
+	text-transform:uppercase;
+	font-weight:bolder;
+	color:#404040;
+}
+
+.editIcon {
+    width: 15px;
+    float: right;
+    margin-right: 4px;
 }

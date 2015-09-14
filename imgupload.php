@@ -43,7 +43,7 @@ if ($_FILES["upload"]["size"] > 500000) {
 }
 // Allow certain file formats
 if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-&& $imageFileType != "gif" ) {
+&& $imageFileType != "gif" && $imageFileType != "ico" ) {
     echo "<script>alert('Sorry, only JPG, JPEG, PNG & GIF files are allowed.');</script>";
     $uploadOk = 0;
 }
@@ -63,5 +63,5 @@ if ($uploadOk == 0) {
 }
 //Back to previous site
 if(!isset($_GET['CKEditorFuncNum'])){
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
+    echo '<script>history.back();</script>';
 }

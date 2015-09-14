@@ -1,6 +1,6 @@
 <?php
 
-if(isset($_POST["newpath"]) or isset($_GET["newfoldername"])){
+if(isset($_POST["newpath"]) or isset($_POST["extension"]) or isset($_GET["newfoldername"])){
     session_start();
 }
 
@@ -24,6 +24,23 @@ if(isset($_SESSION['username'])){
         $newfoldername = htmlspecialchars($newfoldername, ENT_QUOTES);
         mkdir('../../../'.$newfoldername.'', 0777, true);
         header('Location: ' . $_SERVER['HTTP_REFERER']);
+    } 
+    
+    if(isset($_POST["extension"])){
+        $extension_setting = strip_tags($_POST["extension"]);
+        $extension_setting = htmlspecialchars($extension_setting, ENT_QUOTES);
+        if($extension_setting == "no" or $extension_setting == "yes"){
+            $data = '$file_extens = "'.$extension_setting.'";'.PHP_EOL;
+            $fp = fopen(__DIR__ . '/pluginconfig.php', 'a');
+            fwrite($fp, $data);
+        } else {
+            echo '
+                <script>
+                alert("An error occurred.\r\n\r\nPlease use the plugin settings to change the visibility or try again.");
+                history.back();
+                </script>
+            ';
+        }
     } 
     
 }
@@ -55,8 +72,14 @@ $sy_icons = array(
     "cd-icon-settings.png",
     "cd-icon-upload.png",
     "cd-icon-use.png",
-    "cd-icon-version.png"
+    "cd-icon-version.png",
+    "cd-icon-edit.png",
+    "cd-icon-showext.png",
+    "cd-icon.showext.png"
 );
+
+// show/hide file extension
+$file_extens = "no";
 
 // Path to the upload folder, please set the path using the Image Browser Settings menu.
 

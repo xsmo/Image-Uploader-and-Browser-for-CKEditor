@@ -25,13 +25,13 @@ if(isset($_SESSION['username'])){
                     // check if file is an image
                     $a = getimagesize($imgSrc);
                     $image_type = $a[2];
-                    if(in_array($image_type , array(IMAGETYPE_GIF , IMAGETYPE_JPEG ,IMAGETYPE_PNG))) {
+                    if(in_array($image_type , array(IMAGETYPE_GIF , IMAGETYPE_JPEG , IMAGETYPE_PNG , IMAGETYPE_ICO))) {
                         unlink(__DIR__ . '/' . $imgSrc);
                         header('Location: ' . $_SERVER['HTTP_REFERER']);
                     } else {
                         echo '
                             <script>
-                            alert("You can only delete images. Please try again or delete another image.");
+                            alert("You can only delete images.\r\n\r\nPlease try again or delete another image.");
                             history.back();
                             </script>
                         ';
@@ -47,7 +47,7 @@ if(isset($_SESSION['username'])){
             } else {
                 echo '
                     <script>
-                    alert("You cannot delete sytem files. Please try again or choose another image.");
+                    alert("You cannot delete sytem files.\r\n\r\nPlease try again or choose another image.");
                     history.back();
                     </script>
                 ';
@@ -55,7 +55,7 @@ if(isset($_SESSION['username'])){
         } else {
             echo '
                 <script>
-                alert("The selected file cannot be deleted. Please try again or choose another image. Note: Don not forget to set CHMOD writable permission (0777) to the imageuploader folder on your server.");
+                alert("The selected file cannot be deleted. Please try again or choose another image.\r\n\r\nNote: Don not forget to set CHMOD writable permission (0777) to the imageuploader folder on your server.");
                 history.back();
                 </script>
             ';
@@ -63,7 +63,7 @@ if(isset($_SESSION['username'])){
     } else {
         echo '
             <script>
-            alert("The file you want to delete does not exist. Please try again or choose another image.");
+            alert("The file you want to delete does not exist.\r\n\r\nPlease try again or choose another image.");
             history.back();
             </script>
         ';

@@ -104,6 +104,19 @@ function useHistoryPath(path){
     });
 }
 
+function extensionSettings(setting){
+    var setting = setting;
+    $.ajax({
+      method: "POST",
+      url: "pluginconfig.php",
+      data: { 
+          extension: setting,
+      }
+    }).done(function( msg ) {
+        location.reload();
+    });
+}
+
 function checkUpload(){
     if( document.getElementById("upload").files.length == 0 ){
         alert("Please select a file to upload.");

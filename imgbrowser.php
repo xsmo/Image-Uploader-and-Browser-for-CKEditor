@@ -125,10 +125,19 @@ loadImages();
     ?>
     <button class="headerBtn greyBtn saveUploadPathA" id="pathCancel">Cancel</button>
     <button class="headerBtn saveUploadPathA" onclick="updateImagePath();">Save</button><br class="saveUploadPathA">
+
+    <br><h3 class="settingsh3">Settings:</h3>
+    <?php if($file_extens == "yes"){ ?>
+        <p class="uploadP" onclick="extensionSettings('no');"><img src="img/cd-icon-hideext.png" class="headerIcon"> Hide file extension</p>
+    <?php } elseif($file_extens == "no") { ?>
+        <p class="uploadP" onclick="extensionSettings('yes');"><img src="img/cd-icon-showext.png" class="headerIcon"> Show file extension</p>
+    <?php } ?>
     
-    <br><h3 class="settingsh3">Settings &amp; Password:</h3>
-    <p class="uploadP" onclick="window.location.href = 'logout.php';"><img src="img/cd-icon-logout.png" class="headerIcon"> Logout</p>
-    <p class="uploadP" onclick="window.open('http://imageuploaderforckeditor.altervista.org/disable_pw.html','about:blank', 'toolbar=no, scrollbars=yes, resizable=no, width=900, height=600');"><img src="img/cd-icon-disable.png" class="headerIcon"> Disable password</p>
+    <?php if($_SESSION["username"] != "disabled_pw"){ ?>
+        <br><h3 class="settingsh3">Password:</h3>
+        <p class="uploadP" onclick="window.location.href = 'logout.php';"><img src="img/cd-icon-logout.png" class="headerIcon"> Logout</p>
+        <p class="uploadP" onclick="window.open('http://imageuploaderforckeditor.altervista.org/disable_pw.html','about:blank', 'toolbar=no, scrollbars=yes, resizable=no, width=900, height=600');"><img src="img/cd-icon-disable.png" class="headerIcon"> Disable password</p>
+    <?php } ?>
     
     <br><h3 class="settingsh3">Do you like our plugin?</h3>
     <p class="uploadP" onclick="$( '#donate' ).submit();"><img src="img/cd-icon-coffee.png" class="headerIcon"> Buy Us A Coffee!</p>
