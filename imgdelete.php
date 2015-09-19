@@ -4,6 +4,20 @@ session_start();
 // Including the plugin config file, don't delete the following row!
 require(__DIR__ . '/pluginconfig.php');
 
+?>
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <title>Image Browser :: Delete</title>
+    <script src="dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
+</head>
+<body>
+
+<?php
+
 if(isset($_SESSION['username'])){
     
     $imgSrc = $_GET["img"];
@@ -31,42 +45,82 @@ if(isset($_SESSION['username'])){
                     } else {
                         echo '
                             <script>
-                            alert("You can only delete images.\r\n\r\nPlease try again or delete another image.");
-                            history.back();
+                            swal({
+                              title: "An error occurred.",
+                              text: "You can only delete images. Please try again or delete another image.",
+                              type: "error",
+                              closeOnConfirm: false
+                            },
+                            function(){
+                              history.back();
+                            });
                             </script>
                         ';
                     }
                 } else {
                     echo '
                         <script>
-                        alert("The file you want to delete is not in the selected upload folder.");
-                        history.back();
+                        swal({
+                          title: "An error occurred.",
+                          text: "The file you want to delete is not in the selected upload folder.",
+                          type: "error",
+                          closeOnConfirm: false
+                        },
+                        function(){
+                          history.back();
+                        });
                         </script>
                     ';
                 }
             } else {
                 echo '
                     <script>
-                    alert("You cannot delete sytem files.\r\n\r\nPlease try again or choose another image.");
-                    history.back();
+                    swal({
+                      title: "An error occurred.",
+                      text: "You cannot delete sytem files. Please try again or choose another image.",
+                      type: "error",
+                      closeOnConfirm: false
+                    },
+                    function(){
+                      history.back();
+                    });
                     </script>
                 ';
             }
         } else {
             echo '
                 <script>
-                alert("The selected file cannot be deleted. Please try again or choose another image.\r\n\r\nNote: Don not forget to set CHMOD writable permission (0777) to the imageuploader folder on your server.");
-                history.back();
+                swal({
+                  title: "An error occurred.",
+                  text: "The selected file cannot be deleted. Please try again or choose another image. Note: Don not forget to set CHMOD writable permission (0777) to the imageuploader folder on your server.",
+                  type: "error",
+                  closeOnConfirm: false
+                },
+                function(){
+                  history.back();
+                });
                 </script>
             ';
         }
     } else {
         echo '
             <script>
-            alert("The file you want to delete does not exist.\r\n\r\nPlease try again or choose another image.");
-            history.back();
+            swal({
+              title: "An error occurred.",
+              text: "The file you want to delete does not exist. Please try again or choose another image.",
+              type: "error",
+              closeOnConfirm: false
+            },
+            function(){
+              history.back();
+            });
             </script>
         ';
     }
 
 }
+
+?>
+        
+</body>
+</html>

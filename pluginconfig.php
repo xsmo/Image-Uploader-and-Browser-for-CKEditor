@@ -1,6 +1,6 @@
 <?php
 
-if(isset($_POST["newpath"]) or isset($_POST["extension"]) or isset($_GET["newfoldername"])){
+if(isset($_POST["newpath"]) or isset($_POST["extension"]) or isset($_GET["newfoldername"]) or isset($_GET["file_style"])){
     session_start();
 }
 
@@ -42,11 +42,26 @@ if(isset($_SESSION['username'])){
             ';
         }
     } 
+    if(isset($_GET["file_style"])){
+        $file_style = strip_tags($_GET["file_style"]);
+        $file_style = htmlspecialchars($file_style, ENT_QUOTES);
+        if($file_style == "block" or $file_style == "list"){
+            setcookie("file_style", $file_style, time()+86400);
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+        } else {
+            echo '
+                <script>
+                alert("An error occurred.\r\n\r\nPlease use the image browser to change the file style or try again.");
+                history.back();
+                </script>
+            ';
+        }
+    } 
     
 }
 
 // Version of the plugin
-$currentpluginver = "4.0.1";
+$currentpluginver = "4.1";
 
 // username and password
 $username = "";
@@ -74,12 +89,25 @@ $sy_icons = array(
     "cd-icon-use.png",
     "cd-icon-version.png",
     "cd-icon-edit.png",
-    "cd-icon-showext.png",
-    "cd-icon.showext.png"
+    "cd-icon-hideext.png",
+    "cd-icon-showext.png".
+    "cd-icon-done.png",
+    "cd-icon-qtrash.png",
+    "cd-icon-qedit.png",
+    "cd-icon-list.png",
+    "cd-icon-block.png",
+    "cd-icon-done.png",
 );
 
 // show/hide file extension
 $file_extens = "no";
+
+// file_style
+if(!isset($_COOKIE["file_style"])){
+    $file_style = "block";
+} else {
+    $file_style = $_COOKIE["file_style"];
+}
 
 // Path to the upload folder, please set the path using the Image Browser Settings menu.
 

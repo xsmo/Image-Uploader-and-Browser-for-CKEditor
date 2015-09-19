@@ -123,3 +123,8 @@ function checkUpload(){
         return false;
     }
 }
+
+function toogleQEditMode(){
+    $( '.fullWidthlastChild, .qEditIconsDiv' ).toggle();
+    $( '#qEditBtnDone, #qEditBtnOpen' ).slideToggle();
+}

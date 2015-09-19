@@ -49,6 +49,8 @@ if ($username == "" and $password == "") {
     <script src="http://ibm.bplaced.com/imageuploader/plugininfo.js"></script>
     <script src="dist/jquery.lazyload.min.js"></script>
     
+    <script src="function.js"></script>
+    
     <script> 
         // Plugin version
         var currentpluginver = "<?php echo $currentpluginver; ?>";
@@ -59,8 +61,6 @@ if ($username == "" and $password == "") {
           data: { root: "<?php echo $root; ?>", link: "<?php echo $link; ?>", ver: ""+ currentpluginver +"" }
         })
     </script>
-    
-    <script src="function.js"></script>
     
 </head>
 <body ontouchstart="">
@@ -75,18 +75,37 @@ if ($username == "" and $password == "") {
     
 <div id="updates"></div>
 
-<p class="folderInfo">In total: <span id="finalcount"></span> Images - <span id="finalsize"></span></p>
+<p class="folderInfo">In total: <span id="finalcount"></span> Images - <span id="finalsize"></span>
+    <?php if($file_style == "block") { ?>
+        <img title="List" src="img/cd-icon-list.png" class="headerIcon floatRight" onclick="window.location.href = 'pluginconfig.php?file_style=list';">
+    <?php } elseif($file_style == "list") { ?>
+        <img title="Block" src="img/cd-icon-block.png" class="headerIcon floatRight" onclick="window.location.href = 'pluginconfig.php?file_style=block';">
+        <img title="Quick Edit" id="qEditBtnOpen" src="img/cd-icon-qedit.png" class="headerIcon floatRight" onclick="toogleQEditMode();">
+        <img title="Quick Edit" id="qEditBtnDone" src="img/cd-icon-done.png" class="headerIcon floatRight" onclick="toogleQEditMode();">
+    <?php } ?>
+</p>
     
 <?php
 loadImages();
 ?>
 
-<div class="fileDiv" onclick="window.location.href = 'http://imageuploaderforckeditor.altervista.org';">
-    <div class="imgDiv">Image Uploader for CKEditor</div>
-    <p class="fileDescription">&copy; 2015 by Moritz Maleck</p>
-    <p class="fileTime">imageuploaderforckeditor.altervista.org</p>
-    <p class="fileTime">180 KB</p>
-</div>
+    
+<?php if($file_style == "block") { ?>
+    <div class="fileDiv" onclick="window.location.href = 'http://imageuploaderforckeditor.altervista.org';">
+        <div class="imgDiv">Image Uploader for CKEditor</div>
+        <p class="fileDescription">&copy; 2015 by Moritz Maleck</p>
+        <p class="fileTime">imageuploaderforckeditor.altervista.org</p>
+        <p class="fileTime">180 KB</p>
+    </div>
+<?php } elseif($file_style == "list") { ?>
+    <div class="fullWidthFileDiv" onclick="window.location.href = 'http://imageuploaderforckeditor.altervista.org';">
+        <div class="fullWidthimgDiv"><img class="fullWidthfileImg lazy" data-original="img/cd-icon-credits.png"></div>
+        <p class="fullWidthfileDescription">Image Uploader for CKEditor</p>
+        <p class="fullWidthfileTime fullWidthfileMime">png</p>
+        <p class="fullWidthfileTime">180 KB</p>
+        <p class="fullWidthfileTime fullWidth30percent">imageuploaderforckeditor.altervista.org</p>
+    </div>
+<?php } ?>
     
 <div id="imageFullSreen">
     <div class="buttonBar">

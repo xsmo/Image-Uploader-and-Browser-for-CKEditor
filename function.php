@@ -24,16 +24,36 @@ function loadImages() {
             $filesizefinal = round($filesizefinal + $filesizetemp) . " KB";
             $calcsize = round($filesizefinal + $filesizetemp);
             $count = ++$count;
-        ?>
+            
+            if($file_style == "block") { ?>
+                <div class="fileDiv" onclick="showImage('<?php echo $image; ?>','<?php echo $image_height; ?>');">
+                    <div class="imgDiv"><img class="fileImg lazy" data-original="<?php echo $image; ?>"></div>
+                    <p class="fileDescription"><span class="fileMime"><?php echo $image_extension; ?></span> <?php echo $image_filename; ?><?php if($file_extens == "yes"){echo ".$image_extension";} ?></p>
+                    <p class="fileTime"><?php echo date ("F d Y H:i", filemtime($image)); ?></p>
+                    <p class="fileTime"><?php echo $filesizetemp; ?> KB</p>
+                </div>
+            <?php } elseif($file_style == "list") { ?>
+                <div class="fullWidthFileDiv" onclick="showImage('<?php echo $image; ?>','<?php echo $image_height; ?>');">
+                    <div class="fullWidthimgDiv"><img class="fullWidthfileImg lazy" data-original="<?php echo $image; ?>"></div>
+                    <p class="fullWidthfileDescription"><?php echo $image_filename; ?><?php if($file_extens == "yes"){echo ".$image_extension";} ?></p>
+                    
+                    <div class="qEditIconsDiv">
+                        <img title="Delete Image" src="img/cd-icon-qtrash.png" class="qEditIconsImg" onclick="window.location.href = 'imgdelete.php?img=<?php echo $image; ?>'">
+                    </div>
+                    
+                    <p class="fullWidthfileTime fullWidthfileMime fullWidthlastChild"><?php echo $image_extension; ?></p>
+                    <p class="fullWidthfileTime"><?php echo $filesizetemp; ?> KB</p>
+                    <p class="fullWidthfileTime fullWidth30percent"><?php echo date ("F d Y H:i", filemtime($image)); ?></p>
+                </div>
+            <?php }
 
-            <div class="fileDiv" onclick="showImage('<?php echo $image; ?>','<?php echo $image_height; ?>');">
-                <div class="imgDiv"><img class="fileImg lazy" data-original="<?php echo $image; ?>"></div>
-                <p class="fileDescription"><span class="fileMime"><?php echo $image_extension; ?></span> <?php echo $image_filename; ?><?php if($file_extens == "yes"){echo ".$image_extension";} ?></p>
-                <p class="fileTime"><?php echo date ("F d Y H:i", filemtime($image)); ?></p>
-                <p class="fileTime"><?php echo $filesizetemp; ?> KB</p>
-            </div>
-
-        <?php endfor;
+        endfor;
+        if($count == 0){
+            $calcsize = 0;
+        }
+        if($calcsize == 0){
+            $filesizefinal = "0 KB";
+        }
         if($calcsize >= 1024){
             $filesizefinal = round($filesizefinal/1024,1) . " MB";
         }
