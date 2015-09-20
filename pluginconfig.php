@@ -30,9 +30,11 @@ if(isset($_SESSION['username'])){
         $extension_setting = strip_tags($_POST["extension"]);
         $extension_setting = htmlspecialchars($extension_setting, ENT_QUOTES);
         if($extension_setting == "no" or $extension_setting == "yes"){
-            $data = '$file_extens = "'.$extension_setting.'";'.PHP_EOL;
-            $fp = fopen(__DIR__ . '/pluginconfig.php', 'a');
-            fwrite($fp, $data);
+            setcookie(
+                "file_extens",
+                $extension_setting,
+                time() + (10 * 365 * 24 * 60 * 60)
+            );
         } else {
             echo '
                 <script>
@@ -46,7 +48,11 @@ if(isset($_SESSION['username'])){
         $file_style = strip_tags($_GET["file_style"]);
         $file_style = htmlspecialchars($file_style, ENT_QUOTES);
         if($file_style == "block" or $file_style == "list"){
-            setcookie("file_style", $file_style, time()+86400);
+            setcookie(
+                "file_style",
+                $file_style,
+                time() + (10 * 365 * 24 * 60 * 60)
+            );
             header('Location: ' . $_SERVER['HTTP_REFERER']);
         } else {
             echo '
@@ -100,7 +106,11 @@ $sy_icons = array(
 );
 
 // show/hide file extension
-$file_extens = "no";
+if(!isset($_COOKIE["file_extens"])){
+    $file_extens = "no";
+} else {
+    $file_extens = $_COOKIE["file_extens"];
+}
 
 // file_style
 if(!isset($_COOKIE["file_style"])){

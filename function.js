@@ -104,6 +104,7 @@ function useHistoryPath(path){
     });
 }
 
+// open pluginconfig.php to change the extension settings
 function extensionSettings(setting){
     var setting = setting;
     $.ajax({
@@ -117,6 +118,7 @@ function extensionSettings(setting){
     });
 }
 
+// check if a file to upload is selected
 function checkUpload(){
     if( document.getElementById("upload").files.length == 0 ){
         alert("Please select a file to upload.");
@@ -124,7 +126,25 @@ function checkUpload(){
     }
 }
 
-function toogleQEditMode(){
+// toggle the edit icons
+function toggleQEditIcons(){
     $( '.fullWidthlastChild, .qEditIconsDiv' ).toggle();
+}
+
+// toggle the edit mode
+function toogleQEditMode(){
+    if($('#qEditBtnOpen').is(':visible')){
+        Cookies.set('qEditMode', 'yes');
+    } else {
+        Cookies.remove('qEditMode');
+    }
+    toggleQEditIcons();
     $( '#qEditBtnDone, #qEditBtnOpen' ).slideToggle();
 }
+
+// check if qEditMode is activated
+$( document ).ready(function() {
+    if(Cookies.get('qEditMode') == "yes"){
+        toogleQEditMode();
+    }
+});

@@ -19,9 +19,9 @@ require(__DIR__ . '/pluginconfig.php');
 <?php
 
 if(isset($_SESSION['username'])){
-    
+
     $imgSrc = $_GET["img"];
-    
+
     // ckeck if file exists
     if(file_exists($imgSrc)){
         // check if file is available to delete
@@ -121,6 +121,6 @@ if(isset($_SESSION['username'])){
 }
 
 ?>
-        
+
 </body>
 </html>

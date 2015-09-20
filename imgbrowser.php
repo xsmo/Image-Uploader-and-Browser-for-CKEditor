@@ -48,6 +48,7 @@ if ($username == "" and $password == "") {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://ibm.bplaced.com/imageuploader/plugininfo.js"></script>
     <script src="dist/jquery.lazyload.min.js"></script>
+    <script src="dist/js.cookie-2.0.3.min.js"></script>
     
     <script src="function.js"></script>
     
@@ -67,7 +68,7 @@ if ($username == "" and $password == "") {
     
 <div id="header">
     <a class="headerA" href="http://imageuploaderforckeditor.altervista.org/" target="_blank"><b>Image Browser</b> for CKEditor</a><br> 
-    <button class="headerBtn" onclick="window.close();"><img src="img/cd-icon-close.png" class="headerIcon"> Close</button>
+    <button class="headerBtn" onclick="Cookies.remove('qEditMode');window.close();"><img src="img/cd-icon-close.png" class="headerIcon"> Close</button>
     <button class="headerBtn" onclick="location.reload();"><img src="img/cd-icon-refresh.png" class="headerIcon"> Refresh</button>
     <button class="headerBtn" onclick="uploadImg();"><img src="img/cd-icon-upload.png" class="headerIcon"> Upload</button>
     <button class="headerBtn" onclick="pluginSettings();"><img src="img/cd-icon-settings.png" class="headerIcon"> Settings</button>
@@ -144,7 +145,7 @@ loadImages();
     ?>
     <button class="headerBtn greyBtn saveUploadPathA" id="pathCancel">Cancel</button>
     <button class="headerBtn saveUploadPathA" onclick="updateImagePath();">Save</button><br class="saveUploadPathA">
-
+    
     <br><h3 class="settingsh3">Settings:</h3>
     <?php if($file_extens == "yes"){ ?>
         <p class="uploadP" onclick="extensionSettings('no');"><img src="img/cd-icon-hideext.png" class="headerIcon"> Hide file extension</p>
