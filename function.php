@@ -1,5 +1,12 @@
 <?php
 
+if(isset($_GET["f"])){
+    $f = $_GET["f"];
+    if($f = "loadImages") {
+        loadImages();
+    }
+}
+
 function loadImages() {
     require(__DIR__ . '/pluginconfig.php');
     if(file_exists($useruploadpath)){
@@ -26,14 +33,20 @@ function loadImages() {
             $count = ++$count;
             
             if($file_style == "block") { ?>
-                <div class="fileDiv" onclick="showImage('<?php echo $image; ?>','<?php echo $image_height; ?>');">
+                <div class="fileDiv"
+                     onclick="showEditBar('<?php echo $image; ?>','<?php echo $image_height; ?>','<?php echo $count; ?>');"
+                     ondblclick="showImage('<?php echo $image; ?>','<?php echo $image_height; ?>');"
+                     data-imgid="<?php echo $count; ?>">
                     <div class="imgDiv"><img class="fileImg lazy" data-original="<?php echo $image; ?>"></div>
                     <p class="fileDescription"><span class="fileMime"><?php echo $image_extension; ?></span> <?php echo $image_filename; ?><?php if($file_extens == "yes"){echo ".$image_extension";} ?></p>
                     <p class="fileTime"><?php echo date ("F d Y H:i", filemtime($image)); ?></p>
                     <p class="fileTime"><?php echo $filesizetemp; ?> KB</p>
                 </div>
             <?php } elseif($file_style == "list") { ?>
-                <div class="fullWidthFileDiv" onclick="showImage('<?php echo $image; ?>','<?php echo $image_height; ?>');">
+                <div class="fullWidthFileDiv"
+                     onclick="showEditBar('<?php echo $image; ?>','<?php echo $image_height; ?>','<?php echo $count; ?>');"
+                     ondblclick="showImage('<?php echo $image; ?>','<?php echo $image_height; ?>');"
+                     data-imgid="<?php echo $count; ?>">
                     <div class="fullWidthimgDiv"><img class="fullWidthfileImg lazy" data-original="<?php echo $image; ?>"></div>
                     <p class="fullWidthfileDescription"><?php echo $image_filename; ?><?php if($file_extens == "yes"){echo ".$image_extension";} ?></p>
                     

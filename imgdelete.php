@@ -40,7 +40,7 @@ if(isset($_SESSION['username'])){
                     $a = getimagesize($imgSrc);
                     $image_type = $a[2];
                     if(in_array($image_type , array(IMAGETYPE_GIF , IMAGETYPE_JPEG , IMAGETYPE_PNG , IMAGETYPE_ICO))) {
-                        unlink(__DIR__ . '/' . $imgSrc);
+                        unlink($imgSrc);
                         header('Location: ' . $_SERVER['HTTP_REFERER']);
                     } else {
                         echo '

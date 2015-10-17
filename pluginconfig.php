@@ -10,6 +10,7 @@ if(isset($_SESSION['username'])){
         $temppath = $_POST["newpath"];
         $newpath = strip_tags($temppath);
         $newpath = htmlspecialchars($newpath, ENT_QUOTES);
+        $root = $_SERVER['DOCUMENT_ROOT'];
         $data = '
     $useruploadfolder = "'.$newpath.'";
     $useruploadpath = "../../../'.$newpath.'/";

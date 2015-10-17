@@ -34,7 +34,9 @@ if ($username == "" and $password == "") {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      ondragover="toggleDropzone('show')"
+      ondragleave="toggleDropzone('hide')">
 <head>
     
     <meta charset="utf-8">
@@ -49,6 +51,9 @@ if ($username == "" and $password == "") {
     <script src="http://ibm.bplaced.com/imageuploader/plugininfo.js"></script>
     <script src="dist/jquery.lazyload.min.js"></script>
     <script src="dist/js.cookie-2.0.3.min.js"></script>
+    
+    <script src="dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
     
     <script src="function.js"></script>
     
@@ -67,14 +72,32 @@ if ($username == "" and $password == "") {
 <body ontouchstart="">
     
 <div id="header">
-    <a class="headerA" href="http://imageuploaderforckeditor.altervista.org/" target="_blank"><b>Image Browser</b> for CKEditor</a><br> 
-    <button class="headerBtn" onclick="Cookies.remove('qEditMode');window.close();"><img src="img/cd-icon-close.png" class="headerIcon"> Close</button>
-    <button class="headerBtn" onclick="location.reload();"><img src="img/cd-icon-refresh.png" class="headerIcon"> Refresh</button>
-    <button class="headerBtn" onclick="uploadImg();"><img src="img/cd-icon-upload.png" class="headerIcon"> Upload</button>
-    <button class="headerBtn" onclick="pluginSettings();"><img src="img/cd-icon-settings.png" class="headerIcon"> Settings</button>
+    <a class="" href="http://imageuploaderforckeditor.altervista.org/" target="_blank"><img src="img/cd-icon-image.png" class="headerIconLogo"></a>
+    <img onclick="Cookies.remove('qEditMode');window.close();" src="img/cd-icon-close-grey.png" class="headerIconRight iconHover">
+    <img onclick="reloadImages();" src="img/cd-icon-refresh.png" class="headerIconRight iconHover">
+    <img onclick="uploadImg();" src="img/cd-icon-upload-grey.png" class="headerIconCenter iconHover">
+    <img onclick="pluginSettings();" src="img/cd-icon-settings.png" class="headerIconRight iconHover">
 </div>
     
-<div id="updates"></div>
+<div id="editbar">
+    <div id="editbarView" onclick="#" class="editbarDiv"><img src="img/cd-icon-images.png" class="editbarIcon editbarIconLeft"><p class="editbarText">View</p></div>
+    <a href="#" id="editbarDownload" download><div class="editbarDiv"><img src="img/cd-icon-download.png" class="editbarIcon editbarIconLeft"><p class="editbarText">Download</p></div></a>
+    <div id="editbarUse" onclick="#" class="editbarDiv"><img src="img/cd-icon-use.png" class="editbarIcon editbarIconLeft"><p class="editbarText">Use</p></div>
+    <div id="editbarDelete" onclick="#" class="editbarDiv"><img src="img/cd-icon-qtrash.png" class="editbarIcon editbarIconLeft"><p class="editbarText">Delete</p></div>
+    <img onclick="hideEditBar();" src="img/cd-icon-close-black.png" class="editbarIcon editbarIconRight">
+</div>
+    
+<div id="updates" class="popout"></div>
+    
+<div id="dropzone" class="dropzone" 
+     ondragenter="return false;"
+     ondragover="return false;"
+     ondrop="drop(event)">
+    <p>
+        <img src="img/cd-icon-upload-big.png"><br>
+        Drop your files here
+    </p>
+</div>
 
 <p class="folderInfo">In total: <span id="finalcount"></span> Images - <span id="finalsize"></span>
     <?php if($file_style == "block") { ?>
@@ -85,10 +108,12 @@ if ($username == "" and $password == "") {
         <img title="Quick Edit" id="qEditBtnDone" src="img/cd-icon-done.png" class="headerIcon floatRight" onclick="toogleQEditMode();">
     <?php } ?>
 </p>
-    
-<?php
-loadImages();
-?>
+
+<div id="files">
+    <?php
+    loadImages();
+    ?>
+</div>
 
     
 <?php if($file_style == "block") { ?>
@@ -107,20 +132,20 @@ loadImages();
         <p class="fullWidthfileTime fullWidth30percent">imageuploaderforckeditor.altervista.org</p>
     </div>
 <?php } ?>
-    
-<div id="imageFullSreen">
+
+<div id="imageFullSreen" class="lightbox popout">
     <div class="buttonBar">
-        <button class="headerBtn" onclick="$('#imageFullSreen').fadeToggle(300); $('#background').fadeToggle(300);"><img src="img/cd-icon-close.png" class="headerIcon"> Close</button>
-        <button class="headerBtn" id="imgActionDelete"><img src="img/cd-icon-delete.png" class="headerIcon"> Delete</button>
-        <a href="#" id="imgActionDownload" download><button class="headerBtn"><img src="img/cd-icon-download.png" class="headerIcon"> Download</button></a>
+        <button id="imageFullSreenClose" class="headerBtn" onclick="$('#imageFullSreen').hide(); $('#background').slideUp(250, 'swing');"><img src="img/cd-icon-close.png" class="headerIcon"></button>
+        <button class="headerBtn" id="imgActionDelete"><img src="img/cd-icon-delete.png" class="headerIcon"></button>
+        <a href="#" id="imgActionDownload" download><button class="headerBtn"><img src="img/cd-icon-download.png" class="headerIcon"></button></a>
         <button class="headerBtn greenBtn" id="imgActionUse" onclick="#" class="imgActionP"><img src="img/cd-icon-use.png" class="headerIcon"> Use</button>
     </div><br><br>
     <img id="imageFSimg" src="#" style="#"><br>
 </div>
     
-<div id="uploadImgDiv">
+<div id="uploadImgDiv" class="lightbox popout">
     <div class="buttonBar">
-        <button class="headerBtn" onclick="$('#uploadImgDiv').fadeToggle(300); $('#background2').fadeToggle(300);"><img src="img/cd-icon-close.png" class="headerIcon"> Close</button>
+        <button class="headerBtn" onclick="$('#uploadImgDiv').hide(); $('#background2').slideUp(250, 'swing');"><img src="img/cd-icon-close.png" class="headerIcon"></button>
         <button class="headerBtn greenBtn" name="submit" onclick="$('#uploadImgForm').submit();"><img src="img/cd-icon-upload.png" class="headerIcon"> Upload</button>
     </div><br><br><br>
     <form action="imgupload.php" method="post" enctype="multipart/form-data" id="uploadImgForm" onsubmit="return checkUpload();">
@@ -131,9 +156,9 @@ loadImages();
     </form>
 </div>
     
-<div id="settingsDiv">
+<div id="settingsDiv" class="lightbox popout">
     <div class="buttonBar">
-        <button class="headerBtn" onclick="$('#settingsDiv').fadeToggle(300); $('#background3').fadeToggle(300);"><img src="img/cd-icon-close.png" class="headerIcon"> Close</button>
+        <button class="headerBtn" onclick="$('#settingsDiv').hide(); $('#background3').slideUp(250, 'swing');"><img src="img/cd-icon-close.png" class="headerIcon"></button>
     </div><br><br><br>
     
     <h3 class="settingsh3">Upload path:</h3>
@@ -183,9 +208,9 @@ loadImages();
 <input type="hidden" name="hosted_button_id" value="BTEL7F2ZLR3T6">
 </form> 
     
-<div id="background" class="background" onclick="$('#imageFullSreen').fadeToggle(300); $('#background').fadeToggle(300);"></div>
-<div id="background2" class="background" onclick="$('#uploadImgDiv').fadeToggle(300); $('#background2').fadeToggle(300);"></div>
-<div id="background3" class="background" onclick="$('#settingsDiv').fadeToggle(300); $('#background3').fadeToggle(300);"></div>
+<div id="background" class="background" onclick="$('#imageFullSreen').hide(); $('#background').slideUp(250, 'swing');"></div>
+<div id="background2" class="background" onclick="$('#uploadImgDiv').hide(); $('#background2').slideUp(250, 'swing');"></div>
+<div id="background3" class="background" onclick="$('#settingsDiv').hide(); $('#background3').slideUp(250, 'swing');"></div>
     
 </body>
 </html>
