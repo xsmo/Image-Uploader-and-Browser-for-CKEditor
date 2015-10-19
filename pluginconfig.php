@@ -68,7 +68,7 @@ if(isset($_SESSION['username'])){
 }
 
 // Version of the plugin
-$currentpluginver = "4.1";
+$currentpluginver = "4.1.3";
 
 // username and password
 $username = "";

@@ -55,8 +55,10 @@ function hideEditBar() {
     
     $(".fileDiv,.fullWidthFileDiv").removeClass( "selected" );
     
-    $("#updates").slideDown(150);
-    $("#updates").css("visibility", "visible"); 
+    if (currentpluginver != pluginversion) {
+        $("#updates").slideDown(150);
+        $("#updates").css("visibility", "visible"); 
+    };
 }
 
 // Use image and overgive image src to ckeditor

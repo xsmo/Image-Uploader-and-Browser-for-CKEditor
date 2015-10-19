@@ -208,9 +208,12 @@ if ($username == "" and $password == "") {
 <input type="hidden" name="hosted_button_id" value="BTEL7F2ZLR3T6">
 </form> 
     
-<div id="background" class="background" onclick="$('#imageFullSreen').hide(); $('#background').slideUp(250, 'swing');"></div>
+<div id="background" class="background" onclick="$('#imageFullSreenClose').trigger('click');"></div>
 <div id="background2" class="background" onclick="$('#uploadImgDiv').hide(); $('#background2').slideUp(250, 'swing');"></div>
 <div id="background3" class="background" onclick="$('#settingsDiv').hide(); $('#background3').slideUp(250, 'swing');"></div>
-    
+
+<!--Noscript part if js is disabled-->
+<noscript> <div class="noscript"> <div id="folderError" class="noscriptContainer popout"> <b>Thanks for choosing Image Uploader and Browser for CKEditor!</b><br><br>To use this plugin you need to <b>enable JavaScript</b> in your web browser. <a href="http://www.enable-javascript.com/" target="_blank">How to enable JavaScript in your browser (external link)</a><br><br>Check out the <a href="http://imageuploaderforckeditor.altervista.org/" target="_blank">Documentation</a> or the <a href="http://imageuploaderforckeditor.altervista.org/support/" target="_blank">Plugin FAQ</a> for more help. </div></div></noscript>
+
 </body>
 </html>

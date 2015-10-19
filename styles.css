@@ -709,6 +709,29 @@ editable:hover {
 
 @media only all and (max-width: 707px){.lightbox{width: 96%;}}@media only all and (max-width: 666px){.lightbox{width: 95.9%;}}@media only all and (max-width: 649px){.lightbox{width: 95.8%;}}@media only all and (max-width: 634px){.lightbox{width: 95.7%;}}@media only all and (max-width: 617px){.lightbox{width: 95.5%;}}@media only all and (max-width: 591px){.lightbox{width: 95.4%;}}@media only all and (max-width: 580px){.lightbox{width: 95%;}}@media only all and (max-width: 552px){.lightbox{width: 94.6%;}}@media only all and (max-width: 500px){.lightbox{width: 94.2%;}}@media only all and (max-width: 461px){.lightbox{width: 93.8%;}}@media only all and (max-width: 430px){.lightbox{width: 93.4%;}}@media only all and (max-width: 404px){.lightbox{width: 93.0%;}}@media only all and (max-width: 381px){.lightbox{width: 92.6%;}}@media only all and (max-width: 360px){.lightbox{width: 91.6%;}}@media only all and (max-width: 325px){.lightbox{width: 91.0%;}}@media only all and (max-width: 310px){.lightbox{width: 90.6%;}}@media only all and (max-width: 287px){.lightbox{width: 90.2%;}}@media only all and (max-width: 274px){.lightbox{width: 89.6%;}}@media only all and (max-width: 274px){.lightbox{width: 89%;}}
 
+.noscript {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    right: 0px;
+    padding-top: 8%;
+    background-color: #F2F2F2;
+    z-index: 9000;
+}
+
+.noscript a {
+    color: #55ACEE;
+}
+
+.noscriptContainer {
+    max-width: 638px;
+    width: 80%;
+    margin: auto;
+}
+
 /* CSS Animations */
 .popout {
     animation: popout .5s ease;
