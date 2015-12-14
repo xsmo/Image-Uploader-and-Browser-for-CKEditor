@@ -24,12 +24,12 @@ if(!$check_permission):
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-        <title>Image Browser for CKEditor :: Fujana Solutions</title>
+        <title><?php echo $imagebrowser1; ?> :: Fujana Solutions</title>
         <meta name="author" content="Moritz Maleck">
         <link rel="icon" href="img/cd-ico-browser.ico">
         <link rel="stylesheet" href="styles.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="http://ibm.bplaced.com/imageuploader/plugininfo.js"></script>
+        <script src="http://www.maleck.org/imageuploader/plugininfo.js"></script>
         <script src="dist/jquery.lazyload.min.js"></script>
         <script src="function.js"></script>
         <style>
@@ -41,13 +41,13 @@ if(!$check_permission):
     <body ontouchstart="">
 
     <div id="header">
-        <a class="headerA" href="http://imageuploaderforckeditor.altervista.org/" target="_blank"><b>Image Browser</b> for CKEditor</a><br> 
+        <a class="headerA" href="http://imageuploaderforckeditor.altervista.org/" target="_blank"><?php echo $imagebrowser1; ?></a><br> 
     </div>
 
     <div id="folderError">
-        <b>Thanks for choosing Image Uploader and Browser for CKEditor!</b><br><br>
-        To use this plugin you need to set <b>CHMOD writable permission (0777)</b> to the <i>imageuploader</i> folder on your server. <a href="http://ow.ly/RE7wC" target="_blank">How to Change File Permissions Using FileZilla (external link)</a><br><br>
-        Check out the <a href="http://imageuploaderforckeditor.altervista.org/" target="_blank">Documentation</a> or the <a href="http://imageuploaderforckeditor.altervista.org/support/" target="_blank">Plugin FAQ</a> for more help.
+        <b><?php echo $alerts1; ?></b><br><br>
+        $alerts2 <a href="http://ow.ly/RE7wC" target="_blank">$alerts3</a><br><br>
+        <?php echo $alerts4; ?>
     </div>
 
     </body>

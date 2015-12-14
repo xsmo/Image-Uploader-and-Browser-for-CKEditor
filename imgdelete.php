@@ -1,6 +1,23 @@
 <?php
 session_start();
 
+// checking lang value
+if(isset($_COOKIE['sy_lang'])) {
+    $load_lang_code = $_COOKIE['sy_lang'];
+} else {
+    $load_lang_code = "en";
+}
+
+// including lang files
+switch ($load_lang_code) {
+    case "en":
+        require(__DIR__ . '/lang/en.php');
+        break;
+    case "pl":
+        require(__DIR__ . '/lang/pl.php');
+        break;
+}
+
 // Including the plugin config file, don't delete the following row!
 require(__DIR__ . '/pluginconfig.php');
 
@@ -10,7 +27,7 @@ require(__DIR__ . '/pluginconfig.php');
 <html lang="de">
 <head>
     <meta charset="utf-8">
-    <title>Image Browser :: Delete</title>
+    <title><?php echo $imagebrowser1; ?> :: Delete</title>
     <script src="dist/sweetalert.min.js"></script>
     <link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
 </head>
@@ -46,8 +63,8 @@ if(isset($_SESSION['username'])){
                         echo '
                             <script>
                             swal({
-                              title: "An error occurred.",
-                              text: "You can only delete images. Please try again or delete another image.",
+                              title: "'.$dltimageerrors1.'",
+                              text: "'.$dltimageerrors2.'",
                               type: "error",
                               closeOnConfirm: false
                             },
@@ -61,8 +78,8 @@ if(isset($_SESSION['username'])){
                     echo '
                         <script>
                         swal({
-                          title: "An error occurred.",
-                          text: "The file you want to delete is not in the selected upload folder.",
+                          title: "'.$dltimageerrors1.'",
+                          text: "'.$dltimageerrors3.'",
                           type: "error",
                           closeOnConfirm: false
                         },
@@ -76,8 +93,8 @@ if(isset($_SESSION['username'])){
                 echo '
                     <script>
                     swal({
-                      title: "An error occurred.",
-                      text: "You cannot delete sytem files. Please try again or choose another image.",
+                      title: "'.$dltimageerrors1.'",
+                      text: "'.$dltimageerrors4.'",
                       type: "error",
                       closeOnConfirm: false
                     },
@@ -91,8 +108,8 @@ if(isset($_SESSION['username'])){
             echo '
                 <script>
                 swal({
-                  title: "An error occurred.",
-                  text: "The selected file cannot be deleted. Please try again or choose another image. Note: Don not forget to set CHMOD writable permission (0777) to the imageuploader folder on your server.",
+                  title: "'.$dltimageerrors1.'",
+                  text: "'.$dltimageerrors5.'",
                   type: "error",
                   closeOnConfirm: false
                 },
@@ -106,8 +123,8 @@ if(isset($_SESSION['username'])){
         echo '
             <script>
             swal({
-              title: "An error occurred.",
-              text: "The file you want to delete does not exist. Please try again or choose another image.",
+              title: "'.$dltimageerrors1.'",
+              text: "'.$dltimageerrors6.'",
               type: "error",
               closeOnConfirm: false
             },

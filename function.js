@@ -133,7 +133,12 @@ function updateImagePath(){
       url: "pluginconfig.php",
       data: { newpath: name, }
     }).done(function( msg ) {
-        location.reload();
+        $('#settingsDiv').hide();
+        $('#background3').slideUp(250, 'swing');
+
+        setTimeout(function(){
+            location.reload();
+        }, 250);
     });
 }
 
@@ -144,7 +149,12 @@ function useHistoryPath(path){
       url: "pluginconfig.php",
       data: { newpath: path, }
     }).done(function( msg ) {
-        location.reload();
+        $('#settingsDiv').hide();
+        $('#background3').slideUp(250, 'swing');
+
+        setTimeout(function(){
+            location.reload();
+        }, 250);
     });
 }
 
@@ -158,7 +168,12 @@ function extensionSettings(setting){
           extension: setting,
       }
     }).done(function( msg ) {
-        location.reload();
+        $('#settingsDiv').hide();
+        $('#background3').slideUp(250, 'swing');
+
+        setTimeout(function(){
+            location.reload();
+        }, 250);
     });
 }
 
@@ -269,6 +284,67 @@ function reloadImages() {
     $('#files').load('function.php?f=loadImages', function(response, status, xhr) {
          $("img.lazy").lazyload();
      });
+}
+
+// select language
+function selectLang(lang) {
+    Cookies.set('sy_lang', lang, { expires: 1095 });
+    
+    $('#setLangDiv').hide();
+    $('#background4').slideUp(250, 'swing');
+    
+    setTimeout(function(){
+        location.reload();
+    }, 250);
+}
+
+// open lang panel
+function openLangPanel() {
+    $('#settingsDiv').hide();
+    $('#background3').slideUp(250, 'swing');
+    
+    setTimeout(function(){
+        $("#setLangDiv").show();
+        $("#background4").slideDown(250, "swing");
+    }, 350);
+}
+
+// enable news
+function enableNews() {
+    Cookies.remove('show_news');
+    
+    $('#settingsDiv').hide();
+    $('#background3').slideUp(250, 'swing');
+    
+    setTimeout(function(){
+        location.reload();
+    }, 250);
+}
+
+// disable news
+function disableNews() {
+    Cookies.set('show_news', 'no', { expires: 7 });
+    
+    $('#settingsDiv').hide();
+    $('#background3').slideUp(250, 'swing');
+    
+    setTimeout(function(){
+        location.reload();
+    }, 250);
+}
+
+function logOut(){
+    $.ajax({
+      method: "POST",
+      url: "logout.php",
+    }).done(function( msg ) {
+        $('#settingsDiv').hide();
+        $('#background3').slideUp(250, 'swing');
+
+        setTimeout(function(){
+            location.reload();
+        }, 300);
+    });
 }
 
 // keyboard shortcuts

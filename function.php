@@ -77,7 +77,7 @@ function loadImages() {
         </script>
         ";
     } else {
-        echo '<div id="folderError">The folder <b>'.$useruploadfolder.'</b> could not be found. Please choose another folder in the settings or <button class="headerBtn" onclick="window.location.href = \'pluginconfig.php?newfoldername='.$useruploadfolder.'\';">create the folder <b>'.$useruploadfolder.'</b></button>.</div>';
+        echo '<div id="folderError">'.$alerts9.' <b>'.$useruploadfolder.'</b> '.$alerts10.' <button class="headerBtn" onclick="window.location.href = \'pluginconfig.php?newfoldername='.$useruploadfolder.'\';">'.$alerts11.' <b>'.$useruploadfolder.'</b></button>.</div>';
     } 
 }
 

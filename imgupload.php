@@ -9,6 +9,23 @@ if(!isset($_SESSION['username'])) {
     exit;
 }
 
+// checking lang value
+if(isset($_COOKIE['sy_lang'])) {
+    $load_lang_code = $_COOKIE['sy_lang'];
+} else {
+    $load_lang_code = "en";
+}
+
+// including lang files
+switch ($load_lang_code) {
+    case "en":
+        require(__DIR__ . '/lang/en.php');
+        break;
+    case "pl":
+        require(__DIR__ . '/lang/pl.php');
+        break;
+}
+
 // Including the plugin config file, don't delete the following row!
 require(__DIR__ . '/pluginconfig.php');
 
@@ -28,28 +45,28 @@ $check = getimagesize($_FILES["upload"]["tmp_name"]);
 if($check !== false) {
     $uploadOk = 1;
 } else {
-    echo "<script>alert('File is not an image.');</script>";
+    echo "<script>alert('".$uploadimgerrors1."');</script>";
     $uploadOk = 0;
 }
 // Check if file already exists
 if (file_exists($target_file)) {
-    echo "<script>alert('Sorry, file already exists.');</script>";
+    echo "<script>alert('".$uploadimgerrors2."');</script>";
     $uploadOk = 0;
 }
 // Check file size
-if ($_FILES["upload"]["size"] > 512000) {
-    echo "<script>alert('Sorry, your file is too large.');</script>";
+if ($_FILES["upload"]["size"] > 1024000) {
+    echo "<script>alert('".$uploadimgerrors3."');</script>";
     $uploadOk = 0;
 }
 // Allow certain file formats
 if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
 && $imageFileType != "gif" && $imageFileType != "ico" ) {
-    echo "<script>alert('Sorry, only JPG, JPEG, PNG & GIF files are allowed.');</script>";
+    echo "<script>alert('".$uploadimgerrors4."');</script>";
     $uploadOk = 0;
 }
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
-    echo "<script>alert('Sorry, your file was not uploaded. Don't forget to set CHMOD writable permission (0777) to imageuploader folder on your server.');</script>";
+    echo "<script>alert('".$uploadimgerrors5."');</script>";
 // if everything is ok, try to upload file
 } else {
     if (move_uploaded_file($_FILES["upload"]["tmp_name"], $target_file)) {
@@ -58,7 +75,7 @@ if ($uploadOk == 0) {
             echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction($CKEditorFuncNum, '$ckfile', '');</script>";
         }
     } else {
-        echo "<script>alert('Sorry, there was an error uploading your file - ".$target_file." - Don't forget to set CHMOD writable permission (0777) to imageuploader folder on your server.');</script>";
+        echo "<script>alert('".$uploadimgerrors6." ".$target_file." ".$uploadimgerrors7."');</script>";
     }
 }
 //Back to previous site

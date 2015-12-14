@@ -1,9 +1,27 @@
+<?php
+// checking lang value
+if(isset($_COOKIE['sy_lang'])) {
+    $load_lang_code = $_COOKIE['sy_lang'];
+} else {
+    $load_lang_code = "en";
+}
+
+// including lang files
+switch ($load_lang_code) {
+    case "en":
+        require(__DIR__ . '/lang/en.php');
+        break;
+    case "pl":
+        require(__DIR__ . '/lang/pl.php');
+        break;
+}
+?>
 <!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>Image Browser for CKEditor :: Fujana Solutions</title>
+<title><?php echo $imagebrowser1; ?> :: Fujana Solutions</title>
 
 <!-- Jquery -->
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
@@ -120,15 +138,15 @@
 <body>
 <div class="container">
 	<div class="login">    
-    <h1>Welcome!</h1>
-    <h2>Please log in.</h2>
+    <h1><?php echo $loginsite1; ?></h1>
+    <h2><?php echo $loginsite2; ?></h2>
 	<form name="form2" action="login.php" method="post">
-    <p class="nameOfInput">Username</p>
+    <p class="nameOfInput"><?php echo $loginsite3; ?></p>
     <input type="text" name="username" class="login_form">
-    <p class="nameOfInput">Password</p>
+    <p class="nameOfInput"><?php echo $loginsite4; ?></p>
     <input type="password" name="password">
     <div style="text-align:right;">
-    <input class="login_btn" type="submit" value="Log in">
+    <input class="login_btn" type="submit" value="<?php echo $loginsite5; ?>">
     </div>
     </form>
     </div>

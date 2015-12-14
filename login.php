@@ -2,6 +2,23 @@
 session_start();
 header('content-type: text/html; charset=utf-8');
 
+// checking lang value
+if(isset($_COOKIE['sy_lang'])) {
+    $load_lang_code = $_COOKIE['sy_lang'];
+} else {
+    $load_lang_code = "en";
+}
+
+// including lang files
+switch ($load_lang_code) {
+    case "en":
+        require(__DIR__ . '/lang/en.php');
+        break;
+    case "pl":
+        require(__DIR__ . '/lang/pl.php');
+        break;
+}
+
 require(__DIR__ . "/pluginconfig.php");
 
 $tmpusername = strip_tags($_POST["username"]);
@@ -14,7 +31,7 @@ if($tmpusername == $username and $password == $tmppassword) {
 } else {
     echo '
         <script>
-        alert("No user found, incorrect password or username!");
+        alert("'.$loginerrors1.'");
         history.back();
         </script>
     ';

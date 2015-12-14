@@ -1,5 +1,22 @@
 <?php
 
+// checking lang value
+if(isset($_COOKIE['sy_lang'])) {
+    $load_lang_code = $_COOKIE['sy_lang'];
+} else {
+    $load_lang_code = "en";
+}
+
+// including lang files
+switch ($load_lang_code) {
+    case "en":
+        require(__DIR__ . '/lang/en.php');
+        break;
+    case "pl":
+        require(__DIR__ . '/lang/pl.php');
+        break;
+}
+
 if(isset($_POST["newpath"]) or isset($_POST["extension"]) or isset($_GET["newfoldername"]) or isset($_GET["file_style"])){
     session_start();
 }
@@ -39,7 +56,7 @@ if(isset($_SESSION['username'])){
         } else {
             echo '
                 <script>
-                alert("An error occurred.\r\n\r\nPlease use the plugin settings to change the visibility or try again.");
+                alert("'.$dltimageerrors1.'\r\n\r\n'.$configerrors1.'");
                 history.back();
                 </script>
             ';
@@ -58,7 +75,7 @@ if(isset($_SESSION['username'])){
         } else {
             echo '
                 <script>
-                alert("An error occurred.\r\n\r\nPlease use the image browser to change the file style or try again.");
+                alert("'.$dltimageerrors1.'\r\n\r\n'.$configerrors2.'");
                 history.back();
                 </script>
             ';
@@ -68,42 +85,52 @@ if(isset($_SESSION['username'])){
 }
 
 // Version of the plugin
-$currentpluginver = "4.1.3";
+$currentpluginver = "4.1.5";
 
 // username and password
 $username = "";
 $password = "";
 
 // ststem icons
-$sy_icons = array(
+$sy_icons = array( 
     "cd-ico-browser.ico",
+    "cd-icon-block.png",
     "cd-icon-browser.png",
     "cd-icon-bug.png",
+    "cd-icon-close-black.png",
+    "cd-icon-close-grey.png",
     "cd-icon-close.png",
     "cd-icon-coffee.png",
     "cd-icon-credits.png",
     "cd-icon-delete.png",
     "cd-icon-disable.png",
+    "cd-icon-done.png",
     "cd-icon-download.png",
+    "cd-icon-edit.png",
+    "cd-icon-english.png",
     "cd-icon-faq.png",
+    "cd-icon-german.png",
+    "cd-icon-hideext.png",
+    "cd-icon-image.png",
     "cd-icon-images.png",
+    "cd-icon-list.png",
     "cd-icon-logout.png",
     "cd-icon-password.png",
+    "cd-icon-polish.png",
+    "cd-icon-qedit.png",
+    "cd-icon-qtrash.png",
     "cd-icon-refresh.png",
     "cd-icon-select.png",
     "cd-icon-settings.png",
+    "cd-icon-showext.png",
+    "cd-icon-translate.png",
+    "cd-icon-updates.png",
+    "cd-icon-upload-big.png",
+    "cd-icon-upload-grey.png",
     "cd-icon-upload.png",
     "cd-icon-use.png",
     "cd-icon-version.png",
-    "cd-icon-edit.png",
-    "cd-icon-hideext.png",
-    "cd-icon-showext.png".
-    "cd-icon-done.png",
-    "cd-icon-qtrash.png",
-    "cd-icon-qedit.png",
-    "cd-icon-list.png",
-    "cd-icon-block.png",
-    "cd-icon-done.png",
+    "cd-icon-warning.png",
 );
 
 // show/hide file extension
@@ -111,6 +138,13 @@ if(!isset($_COOKIE["file_extens"])){
     $file_extens = "no";
 } else {
     $file_extens = $_COOKIE["file_extens"];
+}
+
+// show/hide news section
+if(!isset($_COOKIE["show_news"])){
+    $news_sction = "yes";
+} else {
+    $news_sction = "no";
 }
 
 // file_style
