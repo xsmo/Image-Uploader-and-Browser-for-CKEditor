@@ -69,8 +69,7 @@ function useImage(imgSrc) {
     }
     var funcNum = getUrlParam( 'CKEditorFuncNum' );
     var imgSrc = imgSrc;
-    var ckpath = 'ckeditor/plugins/imageuploader/';
-    var fileUrl = ckpath + imgSrc;
+    var fileUrl = imgSrc;
     window.opener.CKEDITOR.tools.callFunction( funcNum, fileUrl );
     window.close();
 }
