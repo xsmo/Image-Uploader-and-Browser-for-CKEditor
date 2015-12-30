@@ -30,7 +30,7 @@ if(isset($_SESSION['username'])){
         $root = $_SERVER['DOCUMENT_ROOT'];
         $data = '
     $useruploadfolder = "'.$newpath.'";
-    $useruploadpath = "../../../'.$newpath.'/";
+    $useruploadpath = $usersiteroot."$useruploadfolder/";
     $foldershistory[] = "'.$newpath.'";
         '.PHP_EOL;
         $fp = fopen(__DIR__ . '/pluginconfig.php', 'a');
@@ -158,7 +158,10 @@ if(!isset($_COOKIE["file_style"])){
 
 $foldershistory = array();
 $useruploadroot = "http://$_SERVER[HTTP_HOST]";
+$browserfolder = pathinfo("$_SERVER[REQUEST_URI]");
+$browserfolder = ltrim($browserfolder["dirname"], '/');
+$usersiteroot = substr($_SERVER["SCRIPT_FILENAME"], 0, (stripos($_SERVER["SCRIPT_FILENAME"], $_SERVER["SCRIPT_NAME"])+1));
 
-$useruploadfolder = "ckeditor/plugins/imageuploader/uploads";
-$useruploadpath = "../../../$useruploadfolder/";
+$useruploadfolder = "$browserfolder/uploads";
+$useruploadpath = $usersiteroot."$useruploadfolder/";
 $foldershistory[] = $useruploadfolder;

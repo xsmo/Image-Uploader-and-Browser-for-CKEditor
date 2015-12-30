@@ -37,7 +37,8 @@ require(__DIR__ . '/pluginconfig.php');
 
 if(isset($_SESSION['username'])){
 
-    $imgSrc = $_GET["img"];
+    $imgName = $_GET["img"];
+    $imgSrc = $useruploadpath.$imgName;
 
     // ckeck if file exists
     if(file_exists($imgSrc)){

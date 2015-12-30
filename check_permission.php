@@ -46,7 +46,7 @@ if(!$check_permission):
 
     <div id="folderError">
         <b><?php echo $alerts1; ?></b><br><br>
-        $alerts2 <a href="http://ow.ly/RE7wC" target="_blank">$alerts3</a><br><br>
+        <?php echo $alerts2; ?> <a href="http://ow.ly/RE7wC" target="_blank"><?php echo $alerts3; ?></a><br><br>
         <?php echo $alerts4; ?>
     </div>
 

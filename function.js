@@ -3,8 +3,6 @@
 
 // Open image modal
 function showImage(imgSrc, imgStyle) {
-    var imgSrc = imgSrc;
-    var imgStyle = imgStyle;
     $("#imageFSimg").attr('src', imgSrc);
     $("#imageFSimg").attr('style', 'max-width:' + imgStyle + 'px');
 
@@ -12,16 +10,16 @@ function showImage(imgSrc, imgStyle) {
     $("#background").slideDown(250, "swing");
 
     $("#imgActionUse").attr("onclick","useImage('" + imgSrc + "')");
-    $("#imgActionDelete").attr("onclick","window.location.href = 'imgdelete.php?img=" + imgSrc + "'");
     $("#imgActionDownload").attr("href", imgSrc);
 
 }
 
 // Open editbar
-function showEditBar(imgSrc, imgStyle, imgID) {
+function showEditBar(imgSrc, imgStyle, imgID, imgName) {
     var imgSrc = imgSrc;
     var imgStyle = imgStyle;
     var imgID = imgID;
+    var imgName = imgName;
 
     $("#editbar").slideUp(100);
     $("#editbar").slideDown(100);
@@ -32,7 +30,7 @@ function showEditBar(imgSrc, imgStyle, imgID) {
     $("#updates").css("visibility", "hidden"); 
     $("#updates").slideUp(150);
     
-    $("#editbarDelete").attr("onclick","deleteImg('" + imgSrc + "', '" + imgID + "');");
+    $("#editbarDelete").attr("onclick","deleteImg('" + imgName + "', '" + imgID + "');");
     $("#editbarUse").attr("onclick","useImage('" + imgSrc + "')");
     $("#editbarView").attr("onclick","showImage('" + imgSrc + "','" + imgStyle + "')");
     $("#editbarDownload").attr("href", imgSrc);
