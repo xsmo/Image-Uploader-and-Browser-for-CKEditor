@@ -51,7 +51,7 @@ $alerts6 = "How to enable JavaScript in your browser (external link)";
 $alerts7 = "A new version of Image Uploader and Browser for CKEditor is available.";
 $alerts8 = "Download it now!";
 $alerts9 = "The folder";
-$alerts10 = "could not be found. Please choose another folder in the settings or";
+$alerts10 = "could not be found.";
 $alerts11 = "create the folder";
 
 $dltimageerrors1 = "An error occurred.";

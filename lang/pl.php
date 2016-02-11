@@ -51,7 +51,7 @@ $alerts6 = "Jak włączyć obsługę JavaScript w przeglądarce (link zewnętrzn
 $alerts7 = "Nowa wersja Ładowarki zdjęć i przeglądarki dla CKEditor jest dostępny.";
 $alerts8 = "Pobierz teraz!";
 $alerts9 = "Folderu";
-$alerts10 = "nie można odnaleźć. Proszę wybrać inny folder w ustawieniach lub";
+$alerts10 = "nie można odnaleźć.";
 $alerts11 = "utwórzyć folder";
 
 $dltimageerrors1 = "Wystąpił błąd.";

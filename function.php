@@ -1,7 +1,7 @@
 <?php
 
 if(isset($_GET["f"])){
-    $f = $_GET["f"];
+    $f = filter_input(INPUT_GET, 'f', FILTER_SANITIZE_STRING);
     if($f = "loadImages") {
         loadImages();
     }
@@ -87,7 +87,7 @@ function loadImages() {
         </script>
         ";
     } else {
-        echo '<div id="folderError">'.$alerts9.' <b>'.$useruploadfolder.'</b> '.$alerts10.' <button class="headerBtn" onclick="window.location.href = \'pluginconfig.php?newfoldername='.$useruploadfolder.'\';">'.$alerts11.' <b>'.$useruploadfolder.'</b></button>.</div>';
+        echo '<div id="folderError">'.$alerts9.' <b>'.$useruploadfolder.'</b> '.$alerts10;
     } 
 }
 

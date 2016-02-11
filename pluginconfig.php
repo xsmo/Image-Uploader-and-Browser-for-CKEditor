@@ -17,16 +17,14 @@ switch ($load_lang_code) {
         break;
 }
 
-if(isset($_POST["newpath"]) or isset($_POST["extension"]) or isset($_GET["newfoldername"]) or isset($_GET["file_style"])){
+if(isset($_POST["newpath"]) or isset($_POST["extension"]) or isset($_GET["file_style"])){
     session_start();
 }
 
 if(isset($_SESSION['username'])){
     
     if(isset($_POST["newpath"])){
-        $temppath = $_POST["newpath"];
-        $newpath = strip_tags($temppath);
-        $newpath = htmlspecialchars($newpath, ENT_QUOTES);
+        $newpath = filter_input(INPUT_POST, 'newpath', FILTER_SANITIZE_STRING);
         $root = $_SERVER['DOCUMENT_ROOT'];
         $data = '
     $useruploadfolder = "'.$newpath.'";
@@ -35,18 +33,10 @@ if(isset($_SESSION['username'])){
         '.PHP_EOL;
         $fp = fopen(__DIR__ . '/pluginconfig.php', 'a');
         fwrite($fp, $data);
-    } 
-
-    if(isset($_GET["newfoldername"])){
-        $newfoldername = strip_tags($_GET["newfoldername"]);
-        $newfoldername = htmlspecialchars($newfoldername, ENT_QUOTES);
-        mkdir('../../../'.$newfoldername.'', 0777, true);
-        header('Location: ' . $_SERVER['HTTP_REFERER']);
-    } 
+    }
     
     if(isset($_POST["extension"])){
-        $extension_setting = strip_tags($_POST["extension"]);
-        $extension_setting = htmlspecialchars($extension_setting, ENT_QUOTES);
+        $extension_setting = filter_input(INPUT_POST, 'extension', FILTER_SANITIZE_STRING);
         if($extension_setting == "no" or $extension_setting == "yes"){
             setcookie(
                 "file_extens",
@@ -63,8 +53,7 @@ if(isset($_SESSION['username'])){
         }
     } 
     if(isset($_GET["file_style"])){
-        $file_style = strip_tags($_GET["file_style"]);
-        $file_style = htmlspecialchars($file_style, ENT_QUOTES);
+        $file_style = filter_input(INPUT_GET, 'file_style', FILTER_SANITIZE_STRING);
         if($file_style == "block" or $file_style == "list"){
             setcookie(
                 "file_style",
@@ -165,3 +154,4 @@ $usersiteroot = substr($_SERVER["SCRIPT_FILENAME"], 0, (stripos($_SERVER["SCRIPT
 $useruploadfolder = "$browserfolder/uploads";
 $useruploadpath = $usersiteroot."$useruploadfolder/";
 $foldershistory[] = $useruploadfolder;
+

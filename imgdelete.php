@@ -37,7 +37,7 @@ require(__DIR__ . '/pluginconfig.php');
 
 if(isset($_SESSION['username'])){
 
-    $imgName = $_GET["img"];
+    $imgName = filter_input(INPUT_GET, 'img', FILTER_SANITIZE_STRING);
     $imgSrc = $useruploadpath.$imgName;
 
     // ckeck if file exists

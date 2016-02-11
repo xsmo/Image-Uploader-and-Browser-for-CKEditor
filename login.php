@@ -21,9 +21,8 @@ switch ($load_lang_code) {
 
 require(__DIR__ . "/pluginconfig.php");
 
-$tmpusername = strip_tags($_POST["username"]);
-$tmpusername = htmlspecialchars($tmpusername, ENT_QUOTES);
-$tmppassword = md5($_POST['password']);
+$tmpusername = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+$tmppassword = md5(filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING));
 
 if($tmpusername == $username and $password == $tmppassword) {
     $_SESSION['username'] = $tmpusername;
