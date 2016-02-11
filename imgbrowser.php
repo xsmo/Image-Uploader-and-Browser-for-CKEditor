@@ -93,7 +93,9 @@ if ($username == "" and $password == "") {
     <img onclick="Cookies.remove('qEditMode');window.close();" src="img/cd-icon-close-grey.png" class="headerIconRight iconHover">
     <img onclick="reloadImages();" src="img/cd-icon-refresh.png" class="headerIconRight iconHover">
     <img onclick="uploadImg();" src="img/cd-icon-upload-grey.png" class="headerIconCenter iconHover">
+    <?php if($show_settings): ?>
     <img onclick="pluginSettings();" src="img/cd-icon-settings.png" class="headerIconRight iconHover">
+    <?php endif; ?>
 </div>
     
 <div id="editbar">
@@ -136,7 +138,7 @@ if ($username == "" and $password == "") {
 <?php if($file_style == "block") { ?>
     <div class="fileDiv" onclick="window.location.href = 'http://imageuploaderforckeditor.altervista.org';">
         <div class="imgDiv">Image Uploader for CKEditor</div>
-        <p class="fileDescription">&copy; 2015 by Moritz Maleck</p>
+        <p class="fileDescription">&copy; 2016 by Moritz Maleck</p>
         <p class="fileTime">imageuploaderforckeditor.altervista.org</p>
         <p class="fileTime">180 KB</p>
     </div>
@@ -171,76 +173,78 @@ if ($username == "" and $password == "") {
         <br>
     </form>
 </div>
-    
-<div id="settingsDiv" class="lightbox popout">
-    <div class="buttonBar">
-        <button class="headerBtn" onclick="$('#settingsDiv').hide(); $('#background3').slideUp(250, 'swing');"><img src="img/cd-icon-close.png" class="headerIcon"></button>
-    </div><br><br><br>
-    
-    <h3 class="settingsh3"><?php echo $panelsettings1; ?></h3>
-    <!--choose existing folder text-->
-    <p class="settingsh3 saveUploadPathP"><?php echo $panelsettings2; ?></p>
-    <!--editable upload path-->
-    <p class="uploadP editable" id="uploadpathEditable"><?php echo $useruploadfolder; ?></p>
-    <!--path history-->
-    <p class="settingsh3 saveUploadPathP"><?php echo $panelsettings3; ?></p>
-    <?php
-    pathHistory();
-    ?>
-    <!--cancel btn-->
-    <button class="headerBtn greyBtn saveUploadPathA" id="pathCancel"><?php echo $buttons5; ?></button>
-    <!--save btn-->
-    <button class="headerBtn saveUploadPathA" onclick="updateImagePath();"><?php echo $buttons6; ?></button><br class="saveUploadPathA">
-    
-    <br><h3 class="settingsh3"><?php echo $panelsettings4; ?></h3>
-    <!--Hide/show news section-->
-    <?php if($news_sction == "yes"){ ?>
-        <p class="uploadP" onclick="disableNews()"><img src="http://www.maleck.org/imageuploader/img/hide.png" class="headerIcon"> <?php echo $panelsettings21; ?></p>
-    <?php } elseif($news_sction == "no") { ?>
-        <p class="uploadP" onclick="enableNews()"><img src="http://www.maleck.org/imageuploader/img/show.png" class="headerIcon"> <?php echo $panelsettings22; ?></p>
-    <?php } ?>
-    <!--Hide/show file extension-->
-    <?php if($file_extens == "yes"){ ?>
-        <p class="uploadP" onclick="extensionSettings('no');"><img src="img/cd-icon-hideext.png" class="headerIcon"> <?php echo $panelsettings5; ?></p>
-    <?php } elseif($file_extens == "no") { ?>
-        <p class="uploadP" onclick="extensionSettings('yes');"><img src="img/cd-icon-showext.png" class="headerIcon"> <?php echo $panelsettings6; ?></p>
-    <?php } ?>
-    <!--change language-->
-    <p class="uploadP" onclick="openLangPanel();"><img src="img/cd-icon-translate.png" class="headerIcon"> <?php echo $panelsettings20; ?></p>
-    
-    <!--show if password is enabled-->
-    <?php if($_SESSION["username"] != "disabled_pw"){ ?>
-        <br><h3 class="settingsh3"><?php echo $panelsettings7; ?></h3>
-        <!--logout-->
-        <p class="uploadP" onclick="logOut();"><img src="img/cd-icon-logout.png" class="headerIcon"> <?php echo $panelsettings8; ?></p>
-        <!--disable password-->
-        <p class="uploadP" onclick="window.open('http://imageuploaderforckeditor.altervista.org/disable_pw.html','about:blank', 'toolbar=no, scrollbars=yes, resizable=no, width=900, height=600');"><img src="img/cd-icon-disable.png" class="headerIcon"> <?php echo $panelsettings9; ?></p>
-    <?php } ?>
-    
-    <br><h3 class="settingsh3"><?php echo $panelsettings10; ?></h3>
-    <!--donate button-->
-    <p class="uploadP" onclick="$( '#donate' ).submit();"><img src="img/cd-icon-coffee.png" class="headerIcon"> <?php echo $panelsettings11; ?></p>
-    
-    <br><h3 class="settingsh3"><?php echo $panelsettings12; ?></h3>
-    <!--FAQ button-->
-    <p class="uploadP" onclick="window.open('http://imageuploaderforckeditor.altervista.org/support/','_blank');"><img src="img/cd-icon-faq.png" class="headerIcon"> <?php echo $panelsettings13; ?></p>
-    <!--report a bug-->
-    <p class="uploadP" onclick="window.open('http://ibm.bplaced.com/contact/index.php?cdproject=Image%20Uploader%20and%20Browser%20for%20CKEditor&cdlink=<?php echo $link; ?>&cdver='+currentpluginver,'_blank');"><img src="img/cd-icon-bug.png" class="headerIcon"> <?php echo $panelsettings14; ?></p>
-    
-    <br><h3 class="settingsh3"><?php echo $panelsettings15; ?></h3>
-    <!--current version-->
-    <p class="uploadP"><img src="img/cd-icon-version.png" class="headerIcon"> <?php echo $currentpluginver; ?></p>
-    
-    <br><h3 class="settingsh3"><?php echo $panelsettings16; ?></h3>
-    <!--credits-->
-    <p class="uploadP"><img src="img/cd-icon-credits.png" class="headerIcon"> <?php echo $panelsettings17; ?></p>
-    
-    <br><h3 class="settingsh3"><?php echo $panelsettings18; ?></h3>
-    <!--icon refr-->
-    <p class="uploadP" onclick="window.open('https://icons8.com','_blank');"><img src="img/cd-icon-images.png" class="headerIcon"> <?php echo $panelsettings19; ?></p>
-    
-    <br>
-</div>
+
+<?php if($show_settings) { ?>
+    <div id="settingsDiv" class="lightbox popout">
+        <div class="buttonBar">
+            <button class="headerBtn" onclick="$('#settingsDiv').hide(); $('#background3').slideUp(250, 'swing');"><img src="img/cd-icon-close.png" class="headerIcon"></button>
+        </div><br><br><br>
+
+        <h3 class="settingsh3"><?php echo $panelsettings1; ?></h3>
+        <!--choose existing folder text-->
+        <p class="settingsh3 saveUploadPathP"><?php echo $panelsettings2; ?></p>
+        <!--editable upload path-->
+        <p class="uploadP editable" id="uploadpathEditable"><?php echo $useruploadfolder; ?></p>
+        <!--path history-->
+        <p class="settingsh3 saveUploadPathP"><?php echo $panelsettings3; ?></p>
+        <?php
+        pathHistory();
+        ?>
+        <!--cancel btn-->
+        <button class="headerBtn greyBtn saveUploadPathA" id="pathCancel"><?php echo $buttons5; ?></button>
+        <!--save btn-->
+        <button class="headerBtn saveUploadPathA" onclick="updateImagePath();"><?php echo $buttons6; ?></button><br class="saveUploadPathA">
+
+        <br><h3 class="settingsh3"><?php echo $panelsettings4; ?></h3>
+        <!--Hide/show news section-->
+        <?php if($news_sction == "yes"){ ?>
+            <p class="uploadP" onclick="disableNews()"><img src="http://www.maleck.org/imageuploader/img/hide.png" class="headerIcon"> <?php echo $panelsettings21; ?></p>
+        <?php } elseif($news_sction == "no") { ?>
+            <p class="uploadP" onclick="enableNews()"><img src="http://www.maleck.org/imageuploader/img/show.png" class="headerIcon"> <?php echo $panelsettings22; ?></p>
+        <?php } ?>
+        <!--Hide/show file extension-->
+        <?php if($file_extens == "yes"){ ?>
+            <p class="uploadP" onclick="extensionSettings('no');"><img src="img/cd-icon-hideext.png" class="headerIcon"> <?php echo $panelsettings5; ?></p>
+        <?php } elseif($file_extens == "no") { ?>
+            <p class="uploadP" onclick="extensionSettings('yes');"><img src="img/cd-icon-showext.png" class="headerIcon"> <?php echo $panelsettings6; ?></p>
+        <?php } ?>
+        <!--change language-->
+        <p class="uploadP" onclick="openLangPanel();"><img src="img/cd-icon-translate.png" class="headerIcon"> <?php echo $panelsettings20; ?></p>
+
+        <!--show if password is enabled-->
+        <?php if($_SESSION["username"] != "disabled_pw"){ ?>
+            <br><h3 class="settingsh3"><?php echo $panelsettings7; ?></h3>
+            <!--logout-->
+            <p class="uploadP" onclick="logOut();"><img src="img/cd-icon-logout.png" class="headerIcon"> <?php echo $panelsettings8; ?></p>
+            <!--disable password-->
+            <p class="uploadP" onclick="window.open('http://imageuploaderforckeditor.altervista.org/disable_pw.html','about:blank', 'toolbar=no, scrollbars=yes, resizable=no, width=900, height=600');"><img src="img/cd-icon-disable.png" class="headerIcon"> <?php echo $panelsettings9; ?></p>
+        <?php } ?>
+
+        <br><h3 class="settingsh3"><?php echo $panelsettings10; ?></h3>
+        <!--donate button-->
+        <p class="uploadP" onclick="$( '#donate' ).submit();"><img src="img/cd-icon-coffee.png" class="headerIcon"> <?php echo $panelsettings11; ?></p>
+
+        <br><h3 class="settingsh3"><?php echo $panelsettings12; ?></h3>
+        <!--FAQ button-->
+        <p class="uploadP" onclick="window.open('http://imageuploaderforckeditor.altervista.org/support/','_blank');"><img src="img/cd-icon-faq.png" class="headerIcon"> <?php echo $panelsettings13; ?></p>
+        <!--report a bug-->
+        <p class="uploadP" onclick="window.open('http://ibm.bplaced.com/contact/index.php?cdproject=Image%20Uploader%20and%20Browser%20for%20CKEditor&cdlink=<?php echo $link; ?>&cdver='+currentpluginver,'_blank');"><img src="img/cd-icon-bug.png" class="headerIcon"> <?php echo $panelsettings14; ?></p>
+
+        <br><h3 class="settingsh3"><?php echo $panelsettings15; ?></h3>
+        <!--current version-->
+        <p class="uploadP"><img src="img/cd-icon-version.png" class="headerIcon"> <?php echo $currentpluginver; ?></p>
+
+        <br><h3 class="settingsh3"><?php echo $panelsettings16; ?></h3>
+        <!--credits-->
+        <p class="uploadP"><img src="img/cd-icon-credits.png" class="headerIcon"> <?php echo $panelsettings17; ?></p>
+
+        <br><h3 class="settingsh3"><?php echo $panelsettings18; ?></h3>
+        <!--icon refr-->
+        <p class="uploadP" onclick="window.open('https://icons8.com','_blank');"><img src="img/cd-icon-images.png" class="headerIcon"> <?php echo $panelsettings19; ?></p>
+
+        <br>
+    </div>
+<?php } ?>
     
 <form id="donate" target="_blank" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 <input type="hidden" name="cmd" value="_s-xclick">

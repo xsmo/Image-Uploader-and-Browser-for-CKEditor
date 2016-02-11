@@ -74,7 +74,10 @@ if(isset($_SESSION['username'])){
 }
 
 // Version of the plugin
-$currentpluginver = "4.1.7";
+$currentpluginver = "4.1.8";
+
+// Show/Hide the settings button
+$show_settings = true;
 
 // username and password
 $username = "";
