@@ -1,5 +1,8 @@
 <?php
 
+$lang_name = "Polskie";
+$inappropriateUse = "Wykorzystanie niedozwolony";
+
 $imagebrowser1 = "Przeglądarka zdjęć dla CKEditor";
 $imagebrowser2 = "Razem:";
 $imagebrowser3 = "zdjęć";
@@ -83,6 +86,7 @@ $loginsite5 = "Zaloguj się";
 $createaccount1 = "Proszę utworzyć nowe (lokalne) konto, aby uniemożliwić innym osobom przeglądanie i porządkowanie zdjęć.";
 $createaccount2 = "W jaki sposób można wyłączyć ochronę hasłem? (link zewnętrzny)";
 $createaccount3 = "Domyślny folder wysyłania jest <b>ckeditor/plugins/imageuploader/uploads</b>. Możesz zmienić to w ustawieniach panelu.";
+$createaccount4 = "Utworzyć konto";
 
 $langpanel1 = "Prosę wybrać język:";
 $langpanel2 = "Aktualnie wybrany:";

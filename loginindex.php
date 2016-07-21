@@ -1,23 +1,9 @@
 <?php
-// checking lang value
-if(isset($_COOKIE['sy_lang'])) {
-    $load_lang_code = $_COOKIE['sy_lang'];
-} else {
-    $load_lang_code = "en";
-}
-
-// including lang files
-switch ($load_lang_code) {
-    case "en":
-        require(__DIR__ . '/lang/en.php');
-        break;
-    case "pl":
-        require(__DIR__ . '/lang/pl.php');
-        break;
-}
+// Including the plugin init file, don't delete the following row!
+require_once(__DIR__ . '/plugininit.php');
 ?>
 <!doctype html>
-<html>
+<html lang="<?=$load_lang_code?>">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">

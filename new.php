@@ -1,9 +1,19 @@
+<?php
+// Including the plugin init file, don't delete the following row!
+require_once(__DIR__ . '/plugininit.php');
+
+if ($username != "") {
+	echo $inappropriateUse;
+	exit;
+}
+?>
+
 <!doctype html>
-<html>
+<html lang="<?=$load_lang_code?>">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>Image Browser for CKEditor :: Fujana Solutions</title>
+<title><?=$imagebrowser1?> :: Fujana Solutions</title>
 
 <!-- Jquery -->
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
@@ -142,23 +152,23 @@
 <body>
 <div class="container">
 	<div class="login">
-    <h1>Welcome!</h1>
-    <h2>Please create a new (local) account to prevent others to view and manage your images.</h2>
-    <h3 class="disable" onclick="window.open('http://imageuploaderforckeditor.altervista.org/disable_pw.html','about:blank', 'toolbar=no, scrollbars=yes, resizable=no, width=900, height=600');">How can I disable the password protection? (external link)</h3>
+    <h1><?=$loginsite1?>!</h1>
+    <h2><?=$createaccount1?></h2>
+    <h3 class="disable" onclick="window.open('http://imageuploaderforckeditor.altervista.org/disable_pw.html','about:blank', 'toolbar=no, scrollbars=yes, resizable=no, width=900, height=600');"><?=$createaccount2?></h3>
 	<form name="form2" action="create.php" method="post">
-    <p class="nameOfInput">Username</p>
+    <p class="nameOfInput"><?=$loginsite3?></p>
     <input type="text" name="username" class="login_form">
-    <p class="nameOfInput">Password</p>
+    <p class="nameOfInput"><?=$loginsite4?></p>
     <input type="password" name="password">
     <div style="text-align:right;">
-    <input class="login_btn" type="submit" value="Create account">
+    <input class="login_btn" type="submit" value="<?=$createaccount4?>">
     </div>
     </form>
     </div>
     <br />
     <div class="hrNews"></div>
     <p class="description">
-        The default upload folder is <b>ckeditor/plugins/imageuploader/uploads</b>. You can change it in the <b>settings</b> panel.
+        <?=$createaccount3?>
     </p> 
     <div class="hrNews hrNews2"></div>
 </div>

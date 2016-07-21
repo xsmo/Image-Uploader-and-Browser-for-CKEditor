@@ -1,57 +1,31 @@
-
-<?php
-session_start();
-?>
-
 <!-- Copyright (c) 2015, Fujana Solutions - Moritz Maleck. All rights reserved. -->
 <!-- For licensing, see LICENSE.md -->
 
 <?php
 
-// Don't remove the following two rows
-$link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-$root = "http://$_SERVER[HTTP_HOST]";
-
-// checking lang value
-if(isset($_COOKIE['sy_lang'])) {
-    $load_lang_code = $_COOKIE['sy_lang'];
-} else {
-    $load_lang_code = "en";
-}
-
-// including lang files
-switch ($load_lang_code) {
-    case "en":
-        require(__DIR__ . '/lang/en.php');
-        break;
-    case "pl":
-        require(__DIR__ . '/lang/pl.php');
-        break;
-}
-
-// Including the plugin config file, don't delete the following row!
-require(__DIR__ . '/pluginconfig.php');
-// Including the functions file, don't delete the following row!
-require(__DIR__ . '/function.php');
+// Including the plugin init file, don't delete the following row!
+require_once(__DIR__ . '/plugininit.php');
 // Including the check_permission file, don't delete the following row!
-require(__DIR__ . '/check_permission.php');
+require_once(__DIR__ . '/check_permission.php');
 
+//Redirections upon "no user" OR "not logged in"
 if ($username == "" and $password == "") {
     if(!isset($_SESSION['username'])){
         include(__DIR__ . '/new.php');
         exit;	
     }
-} else {
-    if(!isset($_SESSION['username'])){
-        include(__DIR__ . '/loginindex.php');
-        exit;	
-    }
+} else if(!isset($_SESSION['username'])){
+	include(__DIR__ . '/loginindex.php');
+	exit;
 }
 
+
+// Including the functions file, don't delete the following row!
+require_once(__DIR__ . '/function.php');
 ?>
 
 <!DOCTYPE html>
-<html lang="en"
+<html lang="<?=$load_lang_code?>"
       ondragover="toggleDropzone('show')"
       ondragleave="toggleDropzone('hide')">
 <head>
@@ -257,7 +231,7 @@ if ($username == "" and $password == "") {
 <div id="background4" class="background" onclick="$('#setLangDiv').hide(); $('#background4').slideUp(250, 'swing');"></div>
 
 <!--Noscript part if js is disabled-->
-<noscript> <div class="noscript"> <div id="folderError" class="noscriptContainer popout"> <b><?php echo $alerts1; ?></b><br><br><?php echo $alerts5; ?> <a href="http://www.enable-javascript.com/" target="_blank"><?php echo $alerts6; ?></a><br><br><?php echo $alerts4; ?> </div></div></noscript>
+<noscript> <div class="noscript"> <div id="folderError" class="noscriptContainer popout"> <b><?php echo $alerts1; ?></b><br><br><?php echo $alerts5; ?> <a href="http://www.enable-javascript.com/$load_lang_code" target="_blank"><?php echo $alerts6; ?></a><br><br><?php echo $alerts4; ?> </div></div></noscript>
     
 <?php   
 // Including the language file, don't delete the following row!
