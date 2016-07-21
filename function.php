@@ -1,4 +1,13 @@
 <?php
+// Including the plugin init file, don't delete the following row!
+require_once(__DIR__ . '/plugininit.php');
+
+//Ensure user connected, otherwise fallback on login page
+if(!isset($_SESSION['username'])){
+	require_once(__DIR__ . '/loginindex.php');
+	exit;
+}
+
 
 if(isset($_GET["f"])){
     $f = filter_input(INPUT_GET, 'f', FILTER_SANITIZE_STRING);
@@ -7,9 +16,7 @@ if(isset($_GET["f"])){
     }
 }
 
-function loadImages() {
-    require(__DIR__ . '/pluginconfig.php');
-    
+function loadImages() {    
     if(file_exists($useruploadpath)){
         
         $filesizefinal = 0;
@@ -92,7 +99,6 @@ function loadImages() {
 }
 
 function pathHistory() {
-    require(__DIR__ . '/pluginconfig.php');
     $latestpathes = array_slice($foldershistory, -3);
     $latestpathes = array_reverse($latestpathes);
     foreach($latestpathes as $folder) {

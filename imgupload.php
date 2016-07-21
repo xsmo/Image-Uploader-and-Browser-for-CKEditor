@@ -3,31 +3,16 @@
 // Copyright (c) 2015, Fujana Solutions - Moritz Maleck. All rights reserved.
 // For licensing, see LICENSE.md
 
-session_start();
+// Including the plugin init file, don't delete the following row!
+require_once(__DIR__ . '/plugininit.php');
 
-if(!isset($_SESSION['username'])) {
-    exit;
+//Ensure user connected, otherwise fallback on login page
+if(!isset($_SESSION['username'])){
+	require_once(__DIR__ . '/loginindex.php');
+	exit;
 }
 
-// checking lang value
-if(isset($_COOKIE['sy_lang'])) {
-    $load_lang_code = $_COOKIE['sy_lang'];
-} else {
-    $load_lang_code = "en";
-}
 
-// including lang files
-switch ($load_lang_code) {
-    case "en":
-        require(__DIR__ . '/lang/en.php');
-        break;
-    case "pl":
-        require(__DIR__ . '/lang/pl.php');
-        break;
-}
-
-// Including the plugin config file, don't delete the following row!
-require(__DIR__ . '/pluginconfig.php');
 
 $info = pathinfo($_FILES["upload"]["name"]);
 $ext = $info['extension'];

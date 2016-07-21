@@ -127,7 +127,7 @@ function updateImagePath(){
     var name = $("#uploadpathEditable").text();
     $.ajax({
       method: "POST",
-      url: "pluginconfig.php",
+      url: "plugininit.php",
       data: { newpath: name, }
     }).done(function( msg ) {
         $('#settingsDiv').hide();
@@ -143,7 +143,7 @@ function useHistoryPath(path){
     var path = path;
     $.ajax({
       method: "POST",
-      url: "pluginconfig.php",
+      url: "plugininit.php",
       data: { newpath: path, }
     }).done(function( msg ) {
         $('#settingsDiv').hide();
@@ -155,12 +155,12 @@ function useHistoryPath(path){
     });
 }
 
-// open pluginconfig.php to change the extension settings
+// open plugininit.php to change the extension settings
 function extensionSettings(setting){
     var setting = setting;
     $.ajax({
       method: "POST",
-      url: "pluginconfig.php",
+      url: "plugininit.php",
       data: { 
           extension: setting,
       }

@@ -1,14 +1,12 @@
 <?php
+// Including the plugin init file, don't delete the following row!
+require_once(__DIR__ . '/plugininit.php');
+
 $filenames = array(
-    "imgbrowser.php",
-    "imgdelete.php",
-    "imgupload.php",
     "pluginconfig.php",
     "uploads/",
 );
-if ($username == "" and $password == "") {
-    $filenames[] = "create.php";
-}
+
 foreach($filenames as $filename){
     if (!is_writable($filename)){
         $check_permission = false;
@@ -19,7 +17,7 @@ foreach($filenames as $filename){
 if(!$check_permission):
 ?>
     <!DOCTYPE html>
-    <html lang="en">
+    <html lang="<?=$load_lang_code?>">
     <head>
 
         <meta charset="utf-8">
