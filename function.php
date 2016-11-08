@@ -26,8 +26,8 @@ function loadImages() {
             $image_basename = $image_pathinfo['basename'];
         
             // image src/url
-            $protocol = !empty($_SERVER['HTTPS']) ? 'https://' : 'http://';
-            $site = $protocol. $_SERVER['SERVER_NAME'] .'/';
+            $protocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') ? 'https://' : 'http://';
+            $site = $protocol. $_SERVER["HTTP_HOST"] .'/';
             $image_url = $site.$useruploadfolder."/".$image_basename;
         
             $size = getimagesize($image);
