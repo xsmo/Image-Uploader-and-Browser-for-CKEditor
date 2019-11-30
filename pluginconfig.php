@@ -22,19 +22,21 @@ if(isset($_POST["newpath"]) or isset($_POST["extension"]) or isset($_GET["file_s
 }
 
 if(isset($_SESSION['username'])){
-    
+
     if(isset($_POST["newpath"])){
-        $newpath = filter_input(INPUT_POST, 'newpath', FILTER_SANITIZE_STRING);
+        $options = array("flags" => FILTER_FLAG_STRIP_LOW | FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_STRIP_BACKTICK);
+        $newpath = filter_input(INPUT_POST, 'newpath', FILTER_SANITIZE_STRING, $options);
+        $newpath = addslashes($newpath);
         $root = $_SERVER['DOCUMENT_ROOT'];
         $data = '
-    $useruploadfolder = "'.$newpath.'";
+    $useruploadfolder = \''.$newpath.'\';
     $useruploadpath = $usersiteroot."$useruploadfolder/";
-    $foldershistory[] = "'.$newpath.'";
+    $foldershistory[] = \''.$newpath.'\';
         '.PHP_EOL;
         $fp = fopen(__DIR__ . '/pluginconfig.php', 'a');
         fwrite($fp, $data);
     }
-    
+
     if(isset($_POST["extension"])){
         $extension_setting = filter_input(INPUT_POST, 'extension', FILTER_SANITIZE_STRING);
         if($extension_setting == "no" or $extension_setting == "yes"){
@@ -51,7 +53,7 @@ if(isset($_SESSION['username'])){
                 </script>
             ';
         }
-    } 
+    }
     if(isset($_GET["file_style"])){
         $file_style = filter_input(INPUT_GET, 'file_style', FILTER_SANITIZE_STRING);
         if($file_style == "block" or $file_style == "list"){
@@ -69,8 +71,8 @@ if(isset($_SESSION['username'])){
                 </script>
             ';
         }
-    } 
-    
+    }
+
 }
 
 // Version of the plugin
@@ -84,7 +86,7 @@ $username = "";
 $password = "";
 
 // ststem icons
-$sy_icons = array( 
+$sy_icons = array(
     "cd-ico-browser.ico",
     "cd-icon-block.png",
     "cd-icon-browser.png",
