@@ -24,8 +24,17 @@ switch ($load_lang_code) {
     case "en":
         require(__DIR__ . '/lang/en.php');
         break;
+    case "pt-BR":
+        require(__DIR__ . '/lang/pt-BR.php');
+        break;
+    case "de-DE":
+        require(__DIR__ . '/lang/de-DE.php');
+        break;
     case "pl":
         require(__DIR__ . '/lang/pl.php');
+        break;
+    case "tr":
+        require(__DIR__ . '/lang/tr.php');
         break;
 }
 
@@ -65,7 +74,6 @@ if ($username == "" and $password == "") {
     <link rel="stylesheet" href="styles.css">
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="http://www.maleck.org/imageuploader/plugininfo.js"></script>
     <script src="dist/jquery.lazyload.min.js"></script>
     <script src="dist/js.cookie-2.0.3.min.js"></script>
     
@@ -74,22 +82,11 @@ if ($username == "" and $password == "") {
     
     <script src="function.js"></script>
     
-    <script> 
-        // Plugin version
-        var currentpluginver = "<?php echo $currentpluginver; ?>";
-        // ajax request to register the plugin for better support
-        $.ajax({
-          method: "POST",
-          url: "http://ibm.bplaced.com/imageuploader/register.php",
-          data: { root: "<?php echo $root; ?>", link: "<?php echo $link; ?>", ver: ""+ currentpluginver +"" }
-        })
-    </script>
-    
 </head>
 <body ontouchstart="">
     
 <div id="header">
-    <a class="" href="http://imageuploaderforckeditor.altervista.org/" target="_blank"><img src="img/cd-icon-image.png" class="headerIconLogo"></a>
+    <a class="" href="https://imagebrowser.maleck.org/" target="_blank"><img src="img/cd-icon-image.png" class="headerIconLogo"></a>
     <img onclick="Cookies.remove('qEditMode');window.close();" src="img/cd-icon-close-grey.png" class="headerIconRight iconHover">
     <img onclick="reloadImages();" src="img/cd-icon-refresh.png" class="headerIconRight iconHover">
     <img onclick="uploadImg();" src="img/cd-icon-upload-grey.png" class="headerIconCenter iconHover">
@@ -136,19 +133,19 @@ if ($username == "" and $password == "") {
 
     
 <?php if($file_style == "block") { ?>
-    <div class="fileDiv" onclick="window.location.href = 'http://imageuploaderforckeditor.altervista.org';">
+    <div class="fileDiv" onclick="window.location.href = 'https://imagebrowser.maleck.org/';">
         <div class="imgDiv">Image Uploader for CKEditor</div>
-        <p class="fileDescription">&copy; 2016 by Moritz Maleck</p>
-        <p class="fileTime">imageuploaderforckeditor.altervista.org</p>
-        <p class="fileTime">180 KB</p>
+        <p class="fileDescription">&copy; 2015-2019 by Moritz Maleck</p>
+        <p class="fileTime">imagebrowser.maleck.org</p>
+        <p class="fileTime">---</p>
     </div>
 <?php } elseif($file_style == "list") { ?>
-    <div class="fullWidthFileDiv" onclick="window.location.href = 'http://imageuploaderforckeditor.altervista.org';">
+    <div class="fullWidthFileDiv" onclick="window.location.href = 'https://imagebrowser.maleck.org/';">
         <div class="fullWidthimgDiv"><img class="fullWidthfileImg lazy" data-original="img/cd-icon-credits.png"></div>
         <p class="fullWidthfileDescription">Image Uploader for CKEditor</p>
-        <p class="fullWidthfileTime fullWidthfileMime">png</p>
-        <p class="fullWidthfileTime">180 KB</p>
-        <p class="fullWidthfileTime fullWidth30percent">imageuploaderforckeditor.altervista.org</p>
+        <p class="fullWidthfileTime fullWidthfileMime">---</p>
+        <p class="fullWidthfileTime">---</p>
+        <p class="fullWidthfileTime fullWidth30percent">imagebrowser.maleck.org</p>
     </div>
 <?php } ?>
 
@@ -220,15 +217,11 @@ if ($username == "" and $password == "") {
             <p class="uploadP" onclick="window.open('http://imageuploaderforckeditor.altervista.org/disable_pw.html','about:blank', 'toolbar=no, scrollbars=yes, resizable=no, width=900, height=600');"><img src="img/cd-icon-disable.png" class="headerIcon"> <?php echo $panelsettings9; ?></p>
         <?php } ?>
 
-        <br><h3 class="settingsh3"><?php echo $panelsettings10; ?></h3>
-        <!--donate button-->
-        <p class="uploadP" onclick="$( '#donate' ).submit();"><img src="img/cd-icon-coffee.png" class="headerIcon"> <?php echo $panelsettings11; ?></p>
-
         <br><h3 class="settingsh3"><?php echo $panelsettings12; ?></h3>
         <!--FAQ button-->
-        <p class="uploadP" onclick="window.open('http://imageuploaderforckeditor.altervista.org/support/','_blank');"><img src="img/cd-icon-faq.png" class="headerIcon"> <?php echo $panelsettings13; ?></p>
+        <p class="uploadP" onclick="window.open('https://support.maleck.org/index.php?p=faq','_blank');"><img src="img/cd-icon-faq.png" class="headerIcon"> <?php echo $panelsettings13; ?></p>
         <!--report a bug-->
-        <p class="uploadP" onclick="window.open('http://ibm.bplaced.com/contact/index.php?cdproject=Image%20Uploader%20and%20Browser%20for%20CKEditor&cdlink=<?php echo $link; ?>&cdver='+currentpluginver,'_blank');"><img src="img/cd-icon-bug.png" class="headerIcon"> <?php echo $panelsettings14; ?></p>
+        <p class="uploadP" onclick="window.open('https://support.maleck.org/index.php?p=support','_blank');"><img src="img/cd-icon-bug.png" class="headerIcon"> <?php echo $panelsettings14; ?></p>
 
         <br><h3 class="settingsh3"><?php echo $panelsettings15; ?></h3>
         <!--current version-->
@@ -245,11 +238,6 @@ if ($username == "" and $password == "") {
         <br>
     </div>
 <?php } ?>
-    
-<form id="donate" target="_blank" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="BTEL7F2ZLR3T6">
-</form> 
     
 <div id="background" class="background" onclick="$('#imageFullSreenClose').trigger('click');"></div>
 <div id="background2" class="background" onclick="$('#uploadImgDiv').hide(); $('#background2').slideUp(250, 'swing');"></div>

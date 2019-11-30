@@ -1,5 +1,7 @@
 <?php
 
+error_reporting(0);
+
 if(isset($_GET["f"])){
     $f = filter_input(INPUT_GET, 'f', FILTER_SANITIZE_STRING);
     if($f = "loadImages") {

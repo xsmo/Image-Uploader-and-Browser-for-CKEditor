@@ -90,14 +90,6 @@ function pluginSettings() {
 
 }
 
-// check if new version is available
-$( document ).ready(function() {
-    if (currentpluginver != pluginversion) {
-        $("#updates").show();
-        $('#updates').html("A new version of "+ pluginname +" ("+ pluginversion +") is available. <a target=\"_blank\" href=\""+ plugindwonload +"\">Download it now!</a>");
-    };
-});
-
 // call jquery lazy load
 $(function() {
     $("img.lazy").lazyload();

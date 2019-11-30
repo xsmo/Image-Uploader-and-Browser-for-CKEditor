@@ -1,12 +1,12 @@
-<?php
 
+Learn more or give us feedback
+<?php
 // checking lang value
 if(isset($_COOKIE['sy_lang'])) {
     $load_lang_code = $_COOKIE['sy_lang'];
 } else {
     $load_lang_code = "en";
 }
-
 // including lang files
 switch ($load_lang_code) {
     case "en":
@@ -16,13 +16,10 @@ switch ($load_lang_code) {
         require(__DIR__ . '/lang/pl.php');
         break;
 }
-
 if(isset($_POST["newpath"]) or isset($_POST["extension"]) or isset($_GET["file_style"])){
     session_start();
 }
-
 if(isset($_SESSION['username'])){
-
     if(isset($_POST["newpath"])){
         $options = array("flags" => FILTER_FLAG_STRIP_LOW | FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_STRIP_BACKTICK);
         $newpath = filter_input(INPUT_POST, 'newpath', FILTER_SANITIZE_STRING, $options);
@@ -36,7 +33,6 @@ if(isset($_SESSION['username'])){
         $fp = fopen(__DIR__ . '/pluginconfig.php', 'a');
         fwrite($fp, $data);
     }
-
     if(isset($_POST["extension"])){
         $extension_setting = filter_input(INPUT_POST, 'extension', FILTER_SANITIZE_STRING);
         if($extension_setting == "no" or $extension_setting == "yes"){
@@ -72,19 +68,14 @@ if(isset($_SESSION['username'])){
             ';
         }
     }
-
 }
-
 // Version of the plugin
-$currentpluginver = "4.1.8";
-
+$currentpluginver = "4.1.9";
 // Show/Hide the settings button
 $show_settings = true;
-
 // username and password
 $username = "";
 $password = "";
-
 // ststem icons
 $sy_icons = array(
     "cd-ico-browser.ico",
@@ -126,37 +117,30 @@ $sy_icons = array(
     "cd-icon-version.png",
     "cd-icon-warning.png",
 );
-
 // show/hide file extension
 if(!isset($_COOKIE["file_extens"])){
     $file_extens = "no";
 } else {
     $file_extens = $_COOKIE["file_extens"];
 }
-
 // show/hide news section
 if(!isset($_COOKIE["show_news"])){
     $news_sction = "yes";
 } else {
     $news_sction = "no";
 }
-
 // file_style
 if(!isset($_COOKIE["file_style"])){
     $file_style = "block";
 } else {
     $file_style = $_COOKIE["file_style"];
 }
-
 // Path to the upload folder, please set the path using the Image Browser Settings menu.
-
 $foldershistory = array();
 $useruploadroot = "http://$_SERVER[HTTP_HOST]";
 $browserfolder = pathinfo("$_SERVER[REQUEST_URI]");
 $browserfolder = ltrim($browserfolder["dirname"], '/');
 $usersiteroot = substr($_SERVER["SCRIPT_FILENAME"], 0, (stripos($_SERVER["SCRIPT_FILENAME"], $_SERVER["SCRIPT_NAME"])+1));
-
 $useruploadfolder = "$browserfolder/uploads";
 $useruploadpath = $usersiteroot."$useruploadfolder/";
 $foldershistory[] = $useruploadfolder;
-

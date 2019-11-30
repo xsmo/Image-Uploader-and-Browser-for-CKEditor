@@ -14,23 +14,26 @@
 
 <style>
 	body {
-		background-color:#F18273;
+		background-color: #073C49;
 		max-width:400px;
 		margin:auto;
 		padding:12px;
-		margin-top:6%;
+		margin-top:5%;
 		margin-bottom:6%;
 		font-family:Verdana, Geneva, sans-serif;
+      text-align: center;
 	}
 	
 	.container {
-		background-color:#FFF;
+		background-color:rgb(255, 255, 255);
 		padding:30px;
+      padding-bottom: 45px;
 		border-radius:0px;
-		-webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-		-moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-		box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.2), 0px 1px 3px 0px rgba(0, 0, 0, 0.05), 0px 1px 0px rgba(255, 255, 255, 0.25) inset;
+    -moz-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.2), 0px 1px 3px 0px rgba(0, 0, 0, 0.05), 0px 1px 0px rgba(255, 255, 255, 0.25) inset;
+    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.2), 0px 1px 3px 0px rgba(0, 0, 0, 0.05), 0px 1px 0px rgba(255, 255, 255, 0.25) inset;
 		text-align:center;
+      border-radius: 5px;
 	}
 	
 	.logo {
@@ -41,19 +44,17 @@
 		border-radius:0px;
 		width:100%;
 		border:solid;
-		border-width:thin;
-		border-color:#CCC;
-		padding:4px;
-		margin-bottom:10px;
-		font-size:24px;
-		font-weight:lighter;
-		transition: all .25s ease-in-out;
-		-moz-transition: all .25s ease-in-out;
-		-webkit-transition: all .25s ease-in-out;
+		border-width: 2px 0px;
+		border-color:#687788;
+		padding:12px 7px;
+		margin-bottom:12px;
+		font-size:18px;
+		font-weight:600;
+      color: #AEB4BB;
 		
-		-webkit-box-sizing: border-box;
-		   -moz-box-sizing: border-box;
-				box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 				
 		-webkit-appearance: none;
 		-webkit-border-radius:0px;
@@ -62,44 +63,47 @@
 	}
 	
 	input:focus {
-		box-shadow: 0 0 3px #64C6E7;
-		opacity:1;
+    border-color: #34495E;
+    opacity: 1;
 	}
 	
 	.nameOfInput {
 		font-size:14px;
-		margin-bottom:1px;
+		margin-bottom:12px;
 		text-align:left;
-		font-weight:bold;
-		color:#666;
+		font-weight:300;
+		color:#687788;
+      margin-left: 7px;
 	}
 	
 	.login_btn {
-		margin-top:14px;
-		background-color:#F9F9F9;
-		border-radius:2px;
-		color:#666;
-		font-weight:normal;
-		font-size:16px;
-		width:auto;
-		padding:5px;
-		border:none !important;
-		cursor:pointer;
+    margin-top:24px;
+    background-color:#ffffff;
+    border-radius:5px;
+    color:#666;
+    font-weight:400;
+    font-size:16px;
+    width:100%;
+    padding:10px 10px;
+    border: solid 2px #848484;
+    cursor:pointer;
 	}
+    
+    .login_btn:hover {
+        background-color: #848484;
+        color: #fff;
+    }
 	
 	.hrNews {
-		border-top:solid;
-		border-top-width:thin;
-		border-top-color:#CCC;
 		margin:auto;
 		margin-top:7px;
-	}
-	
-	.hrNews2 {
-		margin-top:20px;
+      background-color: #eaeaea;
+      padding: 1px 18px;
+      padding-bottom: 7px;
+      border-radius: 5px;
 	}
     h1 { 
-        color: #1862A8; 
+        color: #073c49; 
         font-family: 'Open Sans', sans-serif; 
         font-size: 34px; 
         font-weight: 300; 
@@ -135,6 +139,7 @@
         font-weight: 300; 
         line-height: 17px; 
         margin: 10px 0px -10px;
+        padding-bottom: 14px;
         text-align: left;
     }
 </style>
