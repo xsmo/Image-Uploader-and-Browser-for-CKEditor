@@ -43,7 +43,7 @@ $buttons6 = "Zapisz";
 $buttons7 = "wrzucić plik";
 
 $alerts1 = "Dziękujemy za wybór Ładowarki zdjęć i wyszukiwarki CKEditor!";
-$alerts2 = "Aby korzystać z tej wtyczki, musisz ustawić CHMOD pozwolenie zapisu (0777) do folderu Ładowarka zdjęć na serwerze.";
+$alerts2 = "Aby korzystać z tej wtyczki, musisz ustawić CHMOD pozwolenie zapisu (755) do folderu Ładowarka zdjęć na serwerze.";
 $alerts3 = "Jak zmienić uprawnienia do pliku za pomocą FileZilla (link zewnętrzny)";
 $alerts4 = "Sprawdź <a href='http://imageuploaderforckeditor.altervista.org/' target='_blank'>dokumentację</a> lub <a href='http://imageuploaderforckeditor.altervista.org/support/' target='_blank'>wtyczkę FAQ</a> la większej  pomocy.";
 $alerts5 = "Aby korzystać z tej wtyczki, musisz włączyć obsługę <b>JavaScript</b> w przeglądarce internetowej.";
@@ -58,16 +58,16 @@ $dltimageerrors1 = "Wystąpił błąd.";
 $dltimageerrors2 = "Można usuwać tylko obrazy. Spróbuj ponownie lub usuń inny obraz.";
 $dltimageerrors3 = "Plik który chcesz usunąć, nie jest w wybranym folderze wysyłania.";
 $dltimageerrors4 = "Nie można usunąć plików systemowych. Proszę spróbować ponownie lub wybrać inny obraz.";
-$dltimageerrors5 = "Wybrany plik nie może zostać usunięty. Proszę spróbować ponownie lub wybrać inny obraz. Uwaga: Nie zapomnij ustawić CHMOD pozwolenia zapisu (0777) do folderu Ładowarka zdjęć na serwerze.";
+$dltimageerrors5 = "Wybrany plik nie może zostać usunięty. Proszę spróbować ponownie lub wybrać inny obraz. Uwaga: Nie zapomnij ustawić CHMOD pozwolenia zapisu (755) do folderu Ładowarka zdjęć na serwerze.";
 $dltimageerrors6 = "Plik który chcesz usunąć, nie istnieje. Proszę spróbować ponownie lub wybrać inny obraz.";
 
 $uploadimgerrors1 = "Plik nie jest obrazem.";
 $uploadimgerrors2 = "Niestety, plik już istnieje.";
 $uploadimgerrors3 = "Niestety, plik jest za duży.";
 $uploadimgerrors4 = "Niestety, tylko pliki JPG, JPEG, PNG i GIF są dozwolone.";
-$uploadimgerrors5 = "Niestety, plik nie został przesłany. Nie zapomnij ustawić CHMOD pozwolenia zapisu (0777) do folderu Ładowarki zdjęć na serwerze.";
+$uploadimgerrors5 = "Niestety, plik nie został przesłany. Nie zapomnij ustawić CHMOD pozwolenia zapisu (755) do folderu Ładowarki zdjęć na serwerze.";
 $uploadimgerrors6 = "Niestety, wystąpił błąd podczas przesyłania pliku -";
-$uploadimgerrors7 = "- Nie zapomnij ustawić CHMOD pozwolenia zapisu (0777) do folderu Ładowarki zdjęć na serwerze.";
+$uploadimgerrors7 = "- Nie zapomnij ustawić CHMOD pozwolenia zapisu (755) do folderu Ładowarki zdjęć na serwerze.";
 
 $loginerrors1 = "Użytkownika nie odnaleziono, nieprawidłowe hasło lub nazwę użytkownika!";
 

@@ -43,7 +43,7 @@ $buttons6 = "Save";
 $buttons7 = "Upload";
 
 $alerts1 = "Thanks for choosing Image Uploader and Browser for CKEditor!";
-$alerts2 = "To use this plugin you need to set <b>CHMOD writable permission (0777)</b> to the <i>imageuploader</i> folder on your server.";
+$alerts2 = "To use this plugin you need to set <b>CHMOD writable permission (755)</b> to the <i>imageuploader</i> folder on your server.";
 $alerts3 = "How to Change File Permissions Using FileZilla (external link)";
 $alerts4 = "Check out the <a href='http://imageuploaderforckeditor.altervista.org/' target='_blank'>Documentation</a> or the <a href='http://imageuploaderforckeditor.altervista.org/support/' target='_blank'>Plugin FAQ</a> for more help.";
 $alerts5 = "To use this plugin you need to enable <b>JavaScript</b> in your web browser.";
@@ -58,16 +58,16 @@ $dltimageerrors1 = "An error occurred.";
 $dltimageerrors2 = "You can only delete images. Please try again or delete another image.";
 $dltimageerrors3 = "The file you want to delete is not in the selected upload folder.";
 $dltimageerrors4 = "You cannot delete sytem files. Please try again or choose another image.";
-$dltimageerrors5 = "The selected file cannot be deleted. Please try again or choose another image. Note: Don not forget to set CHMOD writable permission (0777) to the imageuploader folder on your server.";
+$dltimageerrors5 = "The selected file cannot be deleted. Please try again or choose another image. Note: Don not forget to set CHMOD writable permission (755) to the imageuploader folder on your server.";
 $dltimageerrors6 = "The file you want to delete does not exist. Please try again or choose another image.";
 
 $uploadimgerrors1 = "File is not an image.";
 $uploadimgerrors2 = "Sorry, file already exists.";
 $uploadimgerrors3 = "Sorry, your file is too large.";
 $uploadimgerrors4 = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-$uploadimgerrors5 = "Sorry, your file was not uploaded. Don't forget to set CHMOD writable permission (0777) to imageuploader folder on your server.";
+$uploadimgerrors5 = "Sorry, your file was not uploaded. Don't forget to set CHMOD writable permission (755) to imageuploader folder on your server.";
 $uploadimgerrors6 = "Sorry, there was an error uploading your file -";
-$uploadimgerrors7 = "- Don't forget to set CHMOD writable permission (0777) to imageuploader folder on your server.";
+$uploadimgerrors7 = "- Don't forget to set CHMOD writable permission (755) to imageuploader folder on your server.";
 
 $loginerrors1 = "No user found, incorrect password or username!";
 
