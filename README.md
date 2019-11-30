@@ -28,7 +28,7 @@ CKEDITOR.editorConfig = function( config ) {
 };
 ```
 
-Don't forget to set `CHMOD writable permission (0777)` to the **imageuploader** folder on your server.
+Don't forget to set `CHMOD writable permission (755)` to the **imageuploader** folder on your server.
 
 Please read the [Plugin FAQ](http://imageuploaderforckeditor.altervista.org/support/) for more information.
 
