@@ -1,5 +1,13 @@
 # Image Uploader and Browser for CKEditor
-[Image Uploader and Browser for CKEditor](http://imageuploaderforckeditor.altervista.org/) is a plugin that allows you to **upload images** easily to your server and add automatically to CKEditor. Since **version 2.0** you can **browse and manage** your uploaded files online right in your browser - without using a FTP Client. The Image Browser is **responsive** and looks great on every device width.
+[Image Uploader and Browser for CKEditor](https://imagebrowser.maleck.org/index.php) is a plugin that allows you to **upload images** easily to your server and add automatically to CKEditor. Since **version 2.0** you can **browse and manage** your uploaded files online right in your browser - without using a FTP Client. The Image Browser is **responsive** and looks great on every device width.
+
+---
+
+![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png)![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png)![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png)![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png)![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png)![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) 
+**Please note: This project is discontinued and no longer maintained.**
+![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png)![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png)![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png)![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png)![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png)![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) 
+
+---
 
 ## Download
 You can download the Image Uploader and Browser for CKEditor [here](http://ckeditor.com/addon/imageuploader).
@@ -30,8 +38,6 @@ CKEDITOR.editorConfig = function( config ) {
 
 Don't forget to set `CHMOD writable permission (755)` to the **imageuploader** folder on your server.
 
-Please read the [Plugin FAQ](http://imageuploaderforckeditor.altervista.org/support/) for more information.
-
 ## How to use
 
 ### Browse and manage files
@@ -41,19 +47,10 @@ Open the **Image info** tab and click **Browse server**. A new window will open 
 Open the **Image info** tab and click Browse server. A new window will open where you see all your uploaded images. Open the **Settings** to choose another upload path.
 
 ### Further questions?
-Please read the [Plugin FAQ](http://imageuploaderforckeditor.altervista.org/support/).
-
-## Demo
-The demo can be found [here](http://imageuploaderforckeditor.altervista.org/demo.php).
-
-## Share
-[Tweet](http://twitter.com/share?url=http://imageuploaderforckeditor.altervista.org&text=Use%20the%20Image%20Uploader%20for%20CKEditor%20for%20free%20now!%20&hashtags=imageuploaderforckeditor) or [Share on Facebook](http://www.facebook.com/sharer.php?u=http://imageuploaderforckeditor.altervista.org).
-
-## Support
-The support site can be found [here](http://ibm.bplaced.com/contact/index.php?cdproject=Image%20Uploader%20and%20Browser%20for%20CKEditor). Before submitting a support ticket please read the [FAQ](http://imageuploaderforckeditor.altervista.org/support/).
+Please refer to the [plugin documentation](https://imagebrowser.maleck.org/index.php).
 
 ## License
 Image Uploader and Browser for CKEditor is licensed under the MIT license:
 [http://en.wikipedia.org/wiki/MIT_License](http://en.wikipedia.org/wiki/MIT_License)
 
-Copyright © 2015 by Moritz Maleck
+Copyright © 2015-2024 by Moritz Maleck
